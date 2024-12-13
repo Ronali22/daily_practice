@@ -1,0 +1,115 @@
+class Parent {
+
+	private String parentName;//property/variable/field
+	private int parentAge;
+	
+	public void birthdayCelebration(){//method/function/behaviour
+		System.out.println("celebration took place");
+	}
+
+	public void birthdayCelebration(String args){
+		System.out.println("celebration took place for parents");
+	}
+	
+	public void setParentName(String name){
+		 this.parentName = name;
+	}
+	public String getParentName(){
+		 return parentName;
+	}
+	public void toString(){
+		System.out.println("parent name is"+parentName);
+	}
+}
+
+class Child extends Parent{
+
+	Child(){}//constructor[non parameterized]
+
+	Child(String name, int age){//constructor[paramenterized]
+		super.parentName = name;
+		super.parentName = name;
+	}
+
+	public void birthdayCelebration(){
+		System.out.println("celebration took place for child");
+	}
+	
+}
+
+class Home {
+	public static void main(String[] args){
+	Parent p1 = new Parent();
+	p1.setParentName("Suresh");
+	p1.getParentName();
+	System.out.println(p1);
+	
+	Child c1 = new Child("Raju", "52");//parameterized constructor used
+	Child c2 = new Child();//non parameterized constructor used
+	}
+}
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+abstract class Engine{
+
+	String engineType;
+
+	public void startEngine(){
+	
+	System.out.println("engine started");
+
+	}
+
+	public void stopEngine(){
+	
+	System.out.println("engine stopped");
+
+	}
+	
+	abstract public String engineProblems();
+
+}
+
+class Bus extends Engine{
+
+	private int noOfWheels;
+
+	public void startEngine(){
+	
+	System.out.println("engine started");
+	}
+	
+	@Overrride
+	public String engineProblems(){
+		System.out.println("startt issue");
+	}
+}
+
+interface Bike{
+	private static final String bikeModel;
+	abstract public void bikeModification();
+	default public void bikeWash(){
+		System.out.println("clean");
+	}
+}
+
+class HondaBikes implements Bike{
+	public void bikeModification(){
+		System.out.println("bike modified");
+	}
+}
+
+class Vehicle{
+
+public static void main(String[] args){
+
+	Engine e1 = new Engine();//we can not create object of an abstract class
+	Engine b1 = new Bus();
+	b1.startEngine();//output:engine started
+
+	HondaBikes h1 = new HondaBikes();
+	h1.bikeModification();//output: bike modified
+
+}
+}

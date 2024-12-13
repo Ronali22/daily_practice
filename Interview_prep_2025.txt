@@ -1,0 +1,42 @@
+interview prep:-
+====================
+JAVA:-
+============
+OOPS[object oriented programming]
+----------------------------------
+Note: 
+* variables=>properties, fields
+* methods=>behaviours, functions
+* in java every classes extends Object class by default.
+
+1.Inheritance
+--------------
+->Acquiring properties from parent class to child class.
+-> type
+a. single inheritance-> one parent and one child class
+b. multiple inheritance-> not supported (in terms of classes not supported, in terms interface supported)
+c. multilevel inheritance-> one child, one parent, one grand parent class...... and so on
+d. cyclic inheritance-> inter dependent classes
+=> in terms of classes, java doesnot support multiple inheritance. it causes diamond problem thats why.
+diamond problem: as object class is parent of every other class, when we create a child class named Vehicle, which extends two parent classes as Car, Bike. both parent classes are having a method as start(). in this scenario the java compiler will get confuse which start() method to be called.
+
+2.Polymorphism
+----------------
+-> same name but different behaviour
+example:- 
+public int add(int a, int b){return a+b;}
+public String add(String a, String b){return a+b;}
+-> types
+a. Run type polymorphism-> method overloading( in same class, multiple methods with same name and different arguments)
+b. complie type polymorphism-> Method overriding (in different class, multiple methods with same name and different arguments)
+
+3.Abstraction
+--------------
+-> Hiding unwanted implementation and providing useful methods.
+-> By using abstract classes and interfaces we can achieve abstraction.
+-> If a class contains atleast one abstract method, then that class is known as abstract class.
+->Abstract method- a method without implementation is known as abstract method. ex: public void engineStart();
+
+4.Encapsulation
+----------------
+-> Binding properties and behaviours in a single unit.
