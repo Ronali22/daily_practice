@@ -40,3 +40,4 @@ b. complie type polymorphism-> Method overriding (in different class, multiple m
 4.Encapsulation
 ----------------
 -> Binding properties and behaviours in a single unit.
+-> To achieve encapsulation we have to declare all the properties/variables/fields as 'private' and to access those we have to provide public methods, known as setters and getters.
