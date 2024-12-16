@@ -61,5 +61,5 @@ Types:
 
 --> Exception can be handlled using 1. try........catch block 2. throw and throws 3.finally block
 
-
+example
 
