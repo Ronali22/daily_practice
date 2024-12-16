@@ -41,3 +41,25 @@ b. complie type polymorphism-> Method overriding (in different class, multiple m
 ----------------
 -> Binding properties and behaviours in a single unit.
 -> To achieve encapsulation we have to declare all the properties/variables/fields as 'private' and to access those we have to provide public methods, known as setters and getters.
+
+-----------------------------------------------------------------------------------------------------------------
+
+Exception Handling:
+-------------------
+-> Unwanted abroption/termination of program during normal execution is known as exception.
+Types:
+------
+1.Unchecked exception/Run-time exception
+----------------------------------------
+-> The exception which can't be checked by compiler at compile time.
+-> ex: ArithmaticException, NullPointerException, IndexOutOfBoundException, ClassCastException
+
+2.Checked exception/Compile-time exception
+------------------------------------------
+-> The exception which can be checked by compiler at compile time.
+-> ex: ClassNotFoundException, IOException(FileNotFoundException, Interrupted IOException), SQLException
+
+--> Exception can be handlled using 1. try........catch block 2. throw and throws 3.finally block
+
+
+
