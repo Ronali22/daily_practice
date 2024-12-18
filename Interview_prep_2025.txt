@@ -44,6 +44,76 @@ b. complie type polymorphism-> Method overriding (in different class, multiple m
 
 -----------------------------------------------------------------------------------------------------------------
 
+Example of
+1. Inheritance
+----------------
+
+class Vehicle{
+ 	String type;
+ 	int identficationNumber;
+}
+
+class Car extends Vehicle{
+	String company;
+}
+
+class Tata{
+}
+public class InheritanceExample{
+	public static void main(String[]args){
+		Vehicle v=new Car();
+		car c= (Car) v;
+	sout.println(c.company);
+
+}
+}
+
+2. Abstraction
+----------------
+
+abstract class Animal{
+
+	String animalType;
+
+	public void wildAnimal(){
+	
+	System.out.println("wild animal spotted");
+
+	}
+
+	public void domesticAnimal(){
+	
+	System.out.println("domestic animal spotted");
+
+	}
+	
+	abstract public String animalStructure();
+
+}
+
+class Dog extends Animal{
+	private int legs;
+
+	public void wildAnimal(){
+	
+	System.out.println("wild animal spotted");
+	}
+	
+	@Overrride
+	public String animalBehavior(){
+		System.out.println("animals barking");
+	}
+}
+public class AbstractionEx{
+	public static void main(String args[]){
+	Animal a1=new Dog();
+	a1.animalType();
+	a1.wildAnimal();
+	sout.println("-----")
+
+}
+}
+
 Exception Handling:
 -------------------
 -> Unwanted abroption/termination of program during normal execution is known as exception.
