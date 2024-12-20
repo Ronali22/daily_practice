@@ -71,6 +71,7 @@ public class InheritanceExample{
 2. Abstraction
 ----------------
 
+package com.InterviewPractice;
 abstract class Animal{
 
 	String animalType;
@@ -99,19 +100,105 @@ class Dog extends Animal{
 	System.out.println("wild animal spotted");
 	}
 	
-	@Overrride
 	public String animalBehavior(){
+		
 		System.out.println("animals barking");
+		return "animalBehavior";
 	}
-}
-public class AbstractionEx{
-	public static void main(String args[]){
-	Animal a1=new Dog();
-	a1.animalType();
-	a1.wildAnimal();
-	sout.println("-----")
+	@Override
+	public String animalStructure() {
+		System.out.println("abcd");
+		return "animalStructure`";
+	};
 
 }
+public class Abstracton {
+	public static void main(String args[]){
+	Animal a1=new Dog();
+	a1.domesticAnimal();
+	a1.wildAnimal();
+	System.out.println("-----");
+
+}
+}
+
+3. Encapsulation:
+-----------------package com.InterviewPractice;
+
+class Bank{
+	private String userName;
+	private int userId;
+	private String userAddress;
+	
+	public void setUserName(String name) {
+		this.userName=name; //this keyword is used to refer same class non static variable.
+	};
+	public void setUserId(int id) {
+		this.userId=id;
+	}
+	public void setUserAddress(String add) {
+		this.userAddress=add;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public String getUserAddress() {
+		return userAddress;
+	}
+	public String toString() {
+		return userName+" "+userId+" "+userAddress;
+	}
+}
+public class Encapsulation {
+	public static void main(String[]args) {
+		Bank bank=new Bank();
+		bank.setUserName("Raju");
+		bank.setUserId(2024);
+		bank.setUserAddress("bbsr");
+		System.out.print(bank);;
+		
+//		System.out.println(bank.getUserName());
+//		System.out.println(bank.getUserId());
+//		System.out.println(bank.getUserAddress());
+	}
+}
+
+4.Polymorphism:
+---------------
+package com.InterviewPractice;
+
+//note- resolving method call at compile time is known as compile time polymorphism.
+// resolving method call at run time is known as run time polymorphism.
+class Watch{
+	void digital() {
+		System.out.println("buying digital watch");
+	}
+	void digital(int a) {
+		System.out.println("buying two "+a+" set digital watch");
+	}
+}
+class DigitalWatch extends Watch{
+	@Override
+	void digital() {
+		System.out.println("buying new digital watch");
+	}
+}
+public class Polymorphism {
+
+	public static void main(String[] args) {
+		Watch w=new Watch();
+		w.digital();
+		w.digital(2);
+		
+		DigitalWatch d=new DigitalWatch();
+		d.digital(); 
+
+	}
+
 }
 
 Exception Handling:
