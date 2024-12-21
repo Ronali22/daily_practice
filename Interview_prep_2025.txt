@@ -28,7 +28,7 @@ public int add(int a, int b){return a+b;}
 public String add(String a, String b){return a+b;}
 -> types
 a. Run type polymorphism-> method overloading( in same class, multiple methods with same name and different arguments)
-b. complie type polymorphism-> Method overriding (in different class, multiple methods with same name and different arguments)
+b. complie type polymorphism-> Method overriding (in different class, multiple methods with same name and same arguments)
 
 3.Abstraction
 --------------
@@ -45,6 +45,7 @@ b. complie type polymorphism-> Method overriding (in different class, multiple m
 -----------------------------------------------------------------------------------------------------------------
 
 Example of
+
 1. Inheritance
 ----------------
 
@@ -123,7 +124,8 @@ public class Abstracton {
 }
 
 3. Encapsulation:
------------------package com.InterviewPractice;
+-----------------
+package com.InterviewPractice;
 
 class Bank{
 	private String userName;
@@ -201,9 +203,11 @@ public class Polymorphism {
 
 }
 
+
 Exception Handling:
 -------------------
--> Unwanted abroption/termination of program during normal execution is known as exception.
+-> Unwanted termination/abroption of program during normal execution is known as exception.
+
 Types:
 ------
 1.Unchecked exception/Run-time exception
@@ -214,13 +218,13 @@ Types:
 2.Checked exception/Compile-time exception
 ------------------------------------------
 -> The exception which can be checked by compiler at compile time.
--> ex: ClassNotFoundException, IOException(FileNotFoundException, Interrupted IOException), SQLException
+-> ex: ClassNotFoundException, IOException(FileNotFoundException, InterruptedIOException), SQLException
 
 --> Exception can be handlled using 1. try........catch block 2. throw and throws 3.finally block
 
-example
-
-1. try...catch block
+example:1
+---------------
+try...catch block
 ----------------------
 class Math {
 public static void main(String[] args) {
@@ -234,5 +238,41 @@ try{
 }
 }
 }
+example:2
+---------------
+package com.InterviewPractice.exception;
 
+public class ExceptionHandlingExample {
+
+	public static void main(String[] args) {
+		int a = 100;
+		int b = 0;
+		int c = 0;
+//		try {
+//			c = a / b;// risky code
+//		} catch (ArithmeticException e) {
+//			System.out.println("inside ArithmeticException's catch block");
+//		} catch (Exception e) {
+//			System.out.println("inside Exception's catch block");
+//			c = c + 15;
+//		} finally {
+//			System.out.println("thank you");
+//		}
+		try {
+			c = a / b;// risky code
+		} catch (ArithmeticException | NullPointerException e) {//multiple exceptions can be present inn a single catch byusing "or" operator.
+			System.out.println("inside catch block");
+		} finally {
+			System.out.println("thank you");
+		}
+		System.out.println(c);
+		System.out.println("working");
+	}
+
+}
+note: multiple catch with a single try block can be written. but the exceptions should be handled from child to parent type.
+
+throw..........throws keyword:
+-------------------------------
+-> throw is used to create new exception where as throws is used to declare an exception.
 
