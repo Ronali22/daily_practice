@@ -276,3 +276,99 @@ throw..........throws keyword:
 -------------------------------
 -> throw is used to create new exception where as throws is used to declare an exception.
 
+example:3
+-----------------
+package com.InterviewPractice.exception;
+
+//checked exception example
+class DemoException extends Exception {
+	DemoException() {// constructor
+		System.out.println("car exception occured");
+	}
+
+	DemoException(String msg) {
+		System.out.println(msg);
+	}
+}
+
+//unchecked exception example
+class Demo2Exception extends RuntimeException {
+	Demo2Exception() {// constructor
+		System.out.println("car exception occured");
+	}
+
+	Demo2Exception(String msg) {
+		System.out.println(msg);
+	}
+}
+
+public class ThrowAndThrowsExample {
+	public static int division(int a, int b) throws DemoException{
+		return a / b;
+	}
+
+	public static void main(String[] args) {
+		int a = 100;
+		int b = 0;
+		try {
+			if (b == 0) {
+				throw new Demo2Exception("exception occured");
+			}
+			int result = division(a, b);
+			System.out.println(result);
+
+		} catch (DemoException | Demo2Exception e) {
+			System.out.println("inside catch block");
+		}
+		System.out.println("abc");
+		System.out.println("abc");
+		System.out.println("abc");
+		System.out.println("abc");
+	}
+}
+---------------------------------------------------------------
+multithreading:
+------------------
+-> thread can be created 
+1. by extending Thread class
+2. by implementing Runnable interface
+
+example:1
+-----------
+package com.InterviewPractice.multithread;
+
+//String userName;//varibale
+//String userName();//abstract method
+//String userName(){};//concrete method
+//new UserName();//class obejct creation
+
+class MyThread1 extends Thread{//creating thread using Thread class
+	public void run() {
+		for(int i = 1; i<=100;i++) {
+			System.out.println(i);
+		}
+	}
+}
+
+class MyThread2 implements Runnable{//creating thread using Runnable interface
+
+	@Override
+	public void run() {
+		for(int i = 1001; i<=1100;i++) {
+			System.out.println(i);
+		}
+	}
+	
+}
+
+public class MultithreadingExample {
+	public static void main(String[] args) {
+		MyThread1 t1 = new MyThread1();
+		t1.start();
+		
+		MyThread2 t2 = new MyThread2();
+		Thread myThread = new Thread(t2);
+		myThread.start();
+		
+	}
+}
