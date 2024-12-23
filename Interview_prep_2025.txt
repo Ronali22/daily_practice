@@ -372,3 +372,31 @@ public class MultithreadingExample {
 		
 	}
 }
+
+-> in programming we are having multi tasking. this can be of two types. 
+1. multiprocess: multiple processes like playing video on vlc media, working on ide, listening music etc we can do simultaneously. this is know to be multiprocess
+	process: process ia an independent task. its is having its own resources and memory. example:vlc media, working on ide, listening music etc
+2. multithreading:carrying multiple tasks in a single process with the help of multiple threads is known as multithreading.
+	-> in multi threading all the threads are sharing a common resource.
+
+Thread: thread is an independent path of execution. thread is a light weight process. Thread class is present inside java.lang package.
+
+-> A thread can not be started more than once. if we try to do so then it will throw IllegalThreadStateException.
+Types of thread:
+1. Deamon thread:
+	-> these are low priority threads which performs low priority tasks like checking for updates, maintaining history/backups etc..
+	-> JVM does not give much importance to these types of threads.
+2. non deamon thread:
+	-> these are high priority tasks used to carry the main tasks. JVM gives much importance to it.example: main thread in an java programm(refers to main method)
+-> by default a thread is deamon or non deamon that is depends on parent thread. if parent thread is deamon then child thread will also be a deamon thread.
+-> we can set a thread as deamon by using "setDeamon() as true".
+-> we should set the thread as deamon or nondeamon before starting it.
+Thread priority:
+-> every thread has priority level. it veries from 1 to 10. 1 means low 10 means high.
+-> based on the priority of a thread, thread scheduler schedules the thread execution.
+-> by default a thread priority is same as the parent thread's priority.
+-> main threads priority is 5.
+-> we can set a threads priority by using setPriority() method.
+------------------------------------------------------------
+Collections Framework:
+------------------------

@@ -25,12 +25,16 @@ class MyThread2 implements Runnable{//creating thread using Runnable interface
 }
 
 public class MultithreadingExample {
-	public static void main(String[] args) {
-		MyThread1 t1 = new MyThread1();
+	public static void main(String[] args) {//main method is otherwise known as main thread
+		MyThread1 t1 = new MyThread1();//creating child thread from main thread
+		t1.setDaemon(false);
+		t1.setPriority(1);
 		t1.start();
+//		t1.start();//we can not start a thread multiple times
 		
-		MyThread2 t2 = new MyThread2();
+		MyThread2 t2 = new MyThread2();//creating child thread from main thread
 		Thread myThread = new Thread(t2);
+		myThread.setPriority(6);
 		myThread.start();
 		
 	}
