@@ -400,3 +400,195 @@ Thread priority:
 ------------------------------------------------------------
 Collections Framework:
 ------------------------
+1. List:
+---------
+(i) ArrayList:
+--------------
+-> It is the array representation of list implementation class.
+->it allows duplicate elements as it implements list interface.
+
+package com.InterviewPractice.collection;
+
+import java.util.*;
+
+public class ArrayListEx {
+
+	public static void main(String[] args) {
+		ArrayList <Integer> al=new ArrayList<>();
+		al.add(15);
+		al.add(65);
+		al.add(58);
+		al.add(76);
+		System.out.println(al);
+	}
+
+}
+
+(ii) LinkedList:
+-----------------
+-> It is the linked representation of list implementation class.
+-> it allows duplicate elements as it implements list interface.
+
+package com.InterviewPractice.collection;
+
+import java.util.*;
+
+public class LinkedListEx {
+	
+	public static void main(String[] args) {
+		LinkedList <Integer> ll=new LinkedList<>();
+		ll.add(25);
+		ll.add(64);
+		ll.add(51);
+		ll.add(88);
+		System.out.println(ll);
+	}
+
+}
+
+2. Set:
+--------
+(i) HashSet:
+------------
+-> it is an implementation of hashing technique with array representation.
+-> it doesnot allow duplicate elements as it implements set interface.
+-> it's an unordered set because here insertion order is not preserved.
+
+Hashing:
+---------
+-> it is a technique which allows insertion, deletion and find operations in a constant average time.
+
+package com.InterviewPractice.collection;
+
+import java.util.*;
+
+public class HashSetEx {
+
+	public static void main(String[] args) {
+		HashSet <Integer> hs=new HashSet<>();
+		hs.add(50);
+		hs.add(65);
+		hs.add(47);
+		hs.add(15);
+		System.out.println(hs);
+
+	}
+
+}
+
+(ii) LinkedHashSet:
+---------------------
+-> It is an implementation of hashing technique with linked representation.
+-> Here, insertion, deletion order is preserved because it is an ordered set.
+-> it doesnot allow duplicate elements because it implements set interface.
+
+package com.InterviewPractice.collection;
+
+import java.util.*;
+
+public class LinkedHashSetEx {
+
+	public static void main(String[] args) {
+		LinkedHashSet <Integer> lhs=new LinkedHashSet<>();
+		lhs.add(54);
+		lhs.add(35);
+		lhs.add(77);
+		lhs.add(85);
+		System.out.println(lhs);
+
+
+	}
+
+}
+
+(iii) TreeSet:
+---------------
+-> It is an implementation of binary search tree technique with linked representation.
+-> it doesn't allow duplicate values as it implemets list interface.
+->all elements are sorted because it is a sorted set.
+
+Binary search tree:
+--------------------
+->A binary tree said to be a binary search tree if it follows the following rules.
+i. if the element is less than root element then it must be in left sub tree.
+ii. if the element is greater than root element then it ust be in right sub tree.
+
+package com.InterviewPractice.collection;
+
+import java.util.*;
+
+public class TreeSetEx {
+
+	public static void main(String[] args) {
+		TreeSet <Integer> ts=new TreeSet<>();
+		ts.add(21);
+		ts.add(89);
+		ts.add(44);
+		ts.add(82);
+		System.out.println(ts);
+
+
+	}
+
+}
+
+(3) Queue:
+-----------
+->it is an implementation of queue data structure.
+->It follows FIFO principle
+->it allows insertion in rear end only.
+->it allows deletion in front end only.
+
+(i) Priority Queue:
+--------------------
+-> in priority queue lease element is the highest priority.
+-> it allows duplicate elements.
+->Here offer() method is used to insert the elements and poll() method is used to delete the elements.
+->here, insertion order is not preserved.
+
+package com.InterviewPractice.collection;
+
+import java.util.*;
+
+public class PriorityQueueEx {
+
+	public static void main(String[] args) {
+		PriorityQueue <Integer> pq=new PriorityQueue<>();
+		pq.offer(56);
+		pq.offer(65);
+		pq.offer(98);
+		pq.offer(10);
+		pq.offer(25);
+		
+		System.out.println(pq);
+		System.out.println(pq.poll());
+		System.out.println(pq);
+		System.out.println(pq.poll());
+		System.out.println(pq);
+
+	}
+
+}
+
+(ii) Array Deque:
+------------------
+-> It is an implementation of double ended queue data structure with array representation.
+-> it allows duplicate elements.
+->it allows both insertiona and deletion at both the end, as it implemnts dequeu interface.
+
+package com.InterviewPractice.collection;
+
+import java.util.*;
+
+public class ArrayDequeEx {
+
+	public static void main(String[] args) {
+		ArrayDeque <Integer> ad=new ArrayDeque<>();
+		ad.add(20);
+		ad.add(84);
+		ad.add(49);
+		ad.add(62);
+		System.out.println(ad);
+	}
+
+}
