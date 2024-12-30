@@ -592,3 +592,70 @@ public class ArrayDequeEx {
 	}
 
 }
+
+Interface:
+-----------
+-> it is a collection of public static final variables and public abstract methods.
+-> In interface, all variabled are implicitly public static final and all methods are implicitly public abstract.
+-> Every interface itself an abstract.
+-> Interfaces can't be instantiated.
+-> Interface can be inherited into a class by using implements keyword.
+-> Interface can also be inherited into another inteface by using extends keyword.
+->Whenever interface is inherited then all abstract methods of an interface must be overridden in a sub class or sub class must be declared with abstract keyword otherwise compile time error occurs.
+
+package com.InterviewPractice;
+
+interface Bike{
+	void speedUp();
+	void speedDown();
+	void lightOn();
+	void lightOff();
+	default void ElectricSupport() {
+		System.out.println("Electric support provided");
+	}
+}
+interface ElectricBike{
+	void roboticBike();
+	class Remote implements Bike, ElectricBike{
+		@Override
+		public void speedUp() {
+			System.out.println("speed increased");
+		}
+			
+			@Override
+			public void speedDown() {
+				System.out.println("speed decreased");
+			}
+			
+				@Override
+				public void lightOn() {
+					System.out.println("light turnedon");
+				}
+				
+					@Override
+					public void lightOff() {
+						System.out.println("light turnedoff");
+		}
+
+					@Override
+					public void roboticBike() {
+						System.out.println("Robotic bike has started");
+					}
+	}
+public class Interface {
+
+	public static void main(String[] args) {
+		Remote r = new Remote();
+		r.speedUp();
+		r.speedDown();
+		r.lightOn();
+		r.lightOff();
+		r.ElectricSupport();
+		
+	}
+		
+
+	}
+
+}
+
