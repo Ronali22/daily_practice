@@ -2,7 +2,7 @@ package com.InterviewPractice.collection;
 
 import java.util.*;
 
-public class TreeSetEx {
+public class TreeSetEx1 {
 
 	public static void main(String[] args) {
 		TreeSet <Integer> ts=new TreeSet<>();

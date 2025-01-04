@@ -2,7 +2,7 @@ package com.InterviewPractice.collection;
 
 import java.util.*;
 
-public class ArrayListEx {
+public class ArrayListEx1 {
 
 	public static void main(String[] args) {
 		ArrayList <Integer> al=new ArrayList<>();

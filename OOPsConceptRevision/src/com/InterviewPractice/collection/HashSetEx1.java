@@ -2,7 +2,7 @@ package com.InterviewPractice.collection;
 
 import java.util.*;
 
-public class HashSetEx {
+public class HashSetEx1 {
 
 	public static void main(String[] args) {
 		HashSet <Integer> hs=new HashSet<>();

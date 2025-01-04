@@ -2,7 +2,7 @@ package com.InterviewPractice.collection;
 
 import java.util.*;
 
-public class LinkedHashSetEx {
+public class LinkedHashSetEx1 {
 
 	public static void main(String[] args) {
 		LinkedHashSet <Integer> lhs=new LinkedHashSet<>();

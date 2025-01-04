@@ -2,7 +2,7 @@ package com.InterviewPractice.collection;
 
 import java.util.*;
 
-public class PriorityQueueEx {
+public class PriorityQueueEx1 {
 
 	public static void main(String[] args) {
 		PriorityQueue <Integer> pq=new PriorityQueue<>();

@@ -2,7 +2,7 @@ package com.InterviewPractice.collection;
 
 import java.util.*;
 
-public class ArrayDequeEx {
+public class ArrayDequeEx1 {
 
 	public static void main(String[] args) {
 		ArrayDeque <Integer> ad=new ArrayDeque<>();

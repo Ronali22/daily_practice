@@ -2,7 +2,7 @@ package com.InterviewPractice.collection;
 
 import java.util.*;
 
-public class LinkedListEx {
+public class LinkedListEx1 {
 	
 	public static void main(String[] args) {
 		LinkedList <Integer> ll=new LinkedList<>();
