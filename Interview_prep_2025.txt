@@ -429,6 +429,7 @@ public class ArrayListEx {
 -----------------
 -> It is the linked representation of list implementation class.
 -> it allows duplicate elements as it implements list interface.
+-> stores elements in insertion order.
 
 package com.InterviewPractice.collection;
 
