@@ -646,3 +646,131 @@ public class Interface {
 	}
 
 }
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Java 8 features:
+----------------
+1. new Date and Time api
+2. Lambda expression
+3. Functional interface
+4. Stream API
+5. Default methods in interface
+6. Static methods in interface
+7. Method reference
+8. Constructor reference.
+---------------------------------
+1. Lambda expression:
+--------------------
+-> Lambda is an annonymous function.
+-> it has no name, no accesss modifier, no return type.
+->in java upto java 1.7, java was supporting only object oriented programming approach. then from java 1.8 onwards by the help of lambda expressions,
+ functional interfaces, java supported "functional programming" approach.
+->Functional Proframming- java 1.8 onwards, java supported functions as an argument to another function. This is known as functional programming.
+
+example: 
+public static void m1(){System.out.pritln("hello")}; => () -> System.out.println("hello");
+public static int m2(int a, int b){return a+b}; => (a, b) -> a+b;
+public static void m3(String name){System.out.pritln(name)}; => (name) -> System.out.println(name);
+
+2. Functional interface:
+-----------------------------
+-> an interface which having only one abstract method is known as functional interface.
+-> functional interface is used to invoke/call lambda expression.
+
+example:
+package com.InterviewPractice.example;
+
+//with lambda expression
+@FunctionalInterface
+interface Car{
+	void startEngine();
+}
+public class LambdaExpressionExample {
+	public static void main(String[] args) {
+		Car c1 = ()->System.out.println("engine started");//here we are storing a function (i.e annonymous function/lambda expression) inside a variable.
+		c1.startEngine();
+		
+	}
+
+}
+-----------------------------
+-> java provided some predefined functional interfaces.
+1. Predicate:test(T t)
+2. Suplier:get()
+3. Consumer:accept(T t)
+4. Function: apply(T t)
+
+example:
+import java.util.function.Predicate;
+
+//class PredicateDemo {
+//	public boolean test(int i) {
+//		if (i % 2 == 0))
+//		else
+//			return false;
+//	}
+//}
+
+public class LambdaExpressionExample2 {
+	
+	public static void main(String[] args) {
+//		PredicateDemo pd = new PredicateDemo();
+//		boolean result = pd.test(5);
+//		System.out.println(result);
+		
+		//byusing lambda expression and functional interface
+		 Predicate<Integer> p = i -> i % 2 == 0;
+		 System.out.println(p.test(10));
+	}
+	
+}
+-------------------------
+Method Reference:
+-----------------
+-> Instead of using lamda expression, we can also use method reference.
+
+example:
+package com.InterviewPractice.example;
+
+import java.util.List;
+import java.util.function.Predicate;
+
+// WAP to print student names starting with A.
+public class LambdaExpressionAndMethodReferenceExample3 {
+
+	public static boolean checkName(String name) {
+		if (name.charAt(0) == 'A')
+			return true;
+		else
+			return false;
+	}
+
+	public static void main(String[] args) {
+		List<String> sl = List.of("Akash", "Bikash", "Kailash", "Anil", "Amrut");
+//		Predicate<String> p=name->name.charAt(0)== 'A';
+		Predicate<String> p = LambdaExpressionAndMethodReferenceExample3::checkName;//on static context
+		
+//		LambdaExpressionExample3 le = new LambdaExpressionExample3();//on non-static context(remove static keyword from checkName)
+//		Predicate<String> p = le::checkName;
+
+		for (String studentName : sl) {
+			if (p.test(studentName))
+				System.out.println(studentName);
+		}
+
+	}
+
+}
+-------------------------
+Stream API:
+------------
+-> from java 1.8 onwards stream api came into picture.
+-> we use collection to store data and we use stream api to process the data.
+-> stream api has two type of operation to perform. 
+	1. intermediate funcitons: map(), filter(), flatmap() etc..
+	2. terminal functions: max(), min(), count() etc..
+-> stream is like a flow of data which can be preocessed once only.
+-> stream does not change/modify the data present in the collection.
+-> map(): if we want to perform any task on each and every elements present inside a collection then we can use map().
+-> filter(): if we want to preform some filter operation on a collection of data then we can use filter(). 
+
