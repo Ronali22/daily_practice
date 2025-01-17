@@ -17,7 +17,7 @@ public class LambdaExpressionExample2 {
 //		boolean result = pd.test(5);
 //		System.out.println(result);
 		
-		//byusing lambda expression and functional interface
+		//by using lambda expression and functional interface
 		 Predicate<Integer> p = i -> i % 2 == 0;
 		 System.out.println(p.test(10));
 	}
