@@ -718,7 +718,7 @@ public class LambdaExpressionExample2 {
 //		boolean result = pd.test(5);
 //		System.out.println(result);
 		
-		//byusing lambda expression and functional interface
+		//by using lambda expression and functional interface
 		 Predicate<Integer> p = i -> i % 2 == 0;
 		 System.out.println(p.test(10));
 	}
@@ -772,5 +772,188 @@ Stream API:
 -> stream is like a flow of data which can be preocessed once only.
 -> stream does not change/modify the data present in the collection.
 -> map(): if we want to perform any task on each and every elements present inside a collection then we can use map().
--> filter(): if we want to preform some filter operation on a collection of data then we can use filter(). 
+-> filter(): if we want to preform some filter operation on a collection of data then we can use filter().
+-> a stream can be created in two ways. 
+	1. Stream.of() 
+	2. <collectionType>.stream(), example: list.stream()
+example:
+package com.InterviewPractice.revision;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
+//1. WAP to filter female employee.
+//2. WAP to increment salary by 20,000 for each employee
+//3. WAP to filter employees whose salary is more than 20,000
+//4. WAP to filter employees whose name starts with R
+//5. WAP to filter employees whose salary is between 20000 to 40000
+//6. WAP to count employees whose name starts with R
+//7. WAP to find whose salary is maximum
+//8. WAP to find whose salary is minimum
+//9. WAP to sort the employees according to their salary in descending order
+class Employee{
+	private String employeeName;
+	private String employeeGender;
+	private double employeeSalary;
+	
+	public Employee(String employeeName, String employeeGender, double employeeSalary ){
+		super();
+		this.employeeName=employeeName;
+		this.employeeGender=employeeGender;
+		this.employeeSalary=employeeSalary;
+	}
+	public String getEmployeeName() {
+		return employeeName;
+	}
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+	public String getEmployeeGender() {
+		return employeeGender;
+	}
+	public void setEmployeeGender(String employeeGender) {
+		this.employeeGender = employeeGender;
+	}
+	public double getEmployeeSalary() {
+		return employeeSalary;
+	}
+	public void setEmployeeSalary(double employeeSalary) {
+		this.employeeSalary = employeeSalary;
+	}
+	@Override
+	public String toString() {
+		return "Employee [employeeName=" + employeeName + ", employeeGender=" + employeeGender + ", employeeSalary="
+				+ employeeSalary + "]";
+	}
+	
+}
+public class Example1 {
+
+	public static void main(String[] args) {
+		
+Employee employee1 = new Employee("Raju", "Male", 10000.00);
+//System.out.println(employee1.getEmployeeGender());
+Employee employee2 = new Employee("Sita", "Female", 20000.00);
+Employee employee3 = new Employee("Hari", "Male", 30000.00);
+Employee employee4 = new Employee("Gita", "Female", 60000.00);
+Employee employee5 = new Employee("Mita", "Female", 50000.00);
+Employee employee6 = new Employee("Rahul", "Male", 70000.00);
+
+List<Employee> employeeList= List.of(employee1, employee2, employee3, employee4, employee5, employee6);
+
+	//1.
+	//List<Employee> result = employeeList.stream().filter(e->e.getEmployeeGender()=="Female").collect(Collectors.toList());
+	//System.out.println(result);
+	
+	//2.
+	//employeeList.stream().map(e->e.getEmployeeSalary()+20000.00).collect(Collectors.toList()).forEach(System.out::println);
+	
+	//3.
+	//employeeList.stream().filter(e->e.getEmployeeSalary()>20000.00).collect(Collectors.toList()).forEach(System.out::println);
+	
+	//4.
+
+//	employeeList.stream()
+//			.filter(e->e.getEmployeeName().charAt(0)=='R')
+//			.collect(Collectors.toList())
+//			.forEach(System.out::println);;
+	
+	//5.
+	
+//	List<Employee> result = employeeList.stream()
+//			.filter(e->(e.getEmployeeSalary()>20000.00 && e.getEmployeeSalary()<40000.00))
+//			.collect(Collectors.toList());
+	//System.out.println(result);
+	
+	//6.
+//	long count  = employeeList.stream()
+//			.filter(e->e.getEmployeeName().charAt(0)=='R')
+//			.count();
+	//System.out.println(count);
+	
+	//7. 
+	//Employee employeeWithMaxSalary = employeeList.stream().max((a,b)->(int)(a.getEmployeeSalary()-b.getEmployeeSalary())).get();
+	//System.out.println(employeeWithMaxSalary);
+	
+	//8. 
+	//Employee employeeWithMinSalary = employeeList.stream().min((a,b)->(int)(a.getEmployeeSalary()-b.getEmployeeSalary())).get();
+	//System.out.println(employeeWithMinSalary);
+	
+	//9.
+	List<Employee> result = employeeList.stream()
+			.sorted(Comparator.comparing(Employee::getEmployeeSalary).reversed())
+			.collect(Collectors.toList());
+	result.forEach(System.out::println);
+	}
+}
+-------------------------------------------------------------
+Optional class:
+---------------
+-> Optional classes used for handling null.
+-> if a method returns null value, then might be possible the upcoming method may get
+	fail and will throw nullpointer exception. so to prevent this we can use optional class.
+example:
+-------
+package com.InterviewPractice.example;
+
+import java.util.Optional;
+
+class Employee {
+	private String employeeName;
+	private String employeeGender;
+	private double employeeSalary;
+
+	public Employee(String employeeName, String employeeGender, double employeeSalary) {
+		super();
+		this.employeeName = employeeName;
+		this.employeeGender = employeeGender;
+		this.employeeSalary = employeeSalary;
+	}
+
+	public static Optional<Employee> getEmployee(String employeeName, String employeeGender, double employeeSalary) {
+		// assuming data base logic written below and its fetching data from db
+		return Optional.of(new Employee(employeeName, employeeGender, employeeSalary));
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [employeeName=" + employeeName + ", employeeGender=" + employeeGender + ", employeeSalary="
+				+ employeeSalary + "]";
+	}
+}
+
+public class OptionalClassExample {
+	public static void main(String[] args) {
+
+		Optional<Employee> optionalEmployee = Employee.getEmployee("ram", "male", 25000.00);
+		if (optionalEmployee.isEmpty() || optionalEmployee.isPresent())
+			System.out.println(optionalEmployee.get());// getting the actual employee object as final result by using get()
+	}
+}
+------------------------------------------------------------
+-> After completing core java, we have seen collection framework, going forward in advance java there are JDBC, hibernate,servlet,JSP.
+->In JDBC we are establishing the connection between java and database and storing data. But there is a problem, data can be stored in the form of values.
+-> Apart from this, few more problems are there with JDBC, which are known as ORM problems. Those are:
+ 1. Problem of Relations
+ 2. Problem of inheritance
+ 3. Problem of navigation
+ 4. problem of grain
+ 5. problem of identity
+-> To overcome these problem JPA standards has been specified. Any solution providers has to follow these standards.
+-> Different vendors provided their solution to overcome these ORM problems, like- Ibatis, topLink, hibernate
+-> By using hibernatte we can store objects into database.
+->Servlets deals with web technology(old).
+-> In JSP we can write java and html code in the same page.
+
+SPRING FRAMEWORK:
+--------------------
+-> Framework is like a half developed project, which contains pre-defined configurations, dependencies, methods, classes etc.. 
+   which helps us to develop our application faster. Ex: Spring framework, hibernate framework
+-> Spring framework contains. 1. AOP 2.JDBC 3.ORM 4.JEE 5.MVC(WEB) 6.Spring core (IOC and DI)
+
+SPRING CORE:
+------------
+
+
 
