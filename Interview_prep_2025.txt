@@ -792,6 +792,7 @@ import java.util.stream.Collectors;
 //7. WAP to find whose salary is maximum
 //8. WAP to find whose salary is minimum
 //9. WAP to sort the employees according to their salary in descending order
+
 class Employee{
 	private String employeeName;
 	private String employeeGender;
@@ -950,10 +951,77 @@ SPRING FRAMEWORK:
 --------------------
 -> Framework is like a half developed project, which contains pre-defined configurations, dependencies, methods, classes etc.. 
    which helps us to develop our application faster. Ex: Spring framework, hibernate framework
--> Spring framework contains. 1. AOP 2.JDBC 3.ORM 4.JEE 5.MVC(WEB) 6.Spring core (IOC and DI)
+-> Spring framework contains. 1. AOP 2.JDBC 3.ORM 4.JEE 5.MVC(WEB) 6.Spring core (IOC and DI) modules.
+-> By using spring framework, majorly web based applications can be developed.
 
 SPRING CORE:
 ------------
+-> It has IOC and DI concept.
+->IOC- Inversion of Control. DI- Dependency Injection.
+->IOC: Inverting(providing) the power of object creation from developer to spring container.
+->DI: It refers to HAS-A relationship. One class has another classes object inside it, that means, 
+	we will inject one class object into another class by using '@Autowired' annotation.(We can do it using xml configuration as well).
+Note- Inheritance follows IS-A relationship where one class extends another class.
+->Spring Core has spring container. It manages bean(objects inside spring container) life cycle.
+->Spring Framework provides 2 containers.
+ 1. BeanFactory(old)(I)
+ 2. ApplicationContext (new) (I)
+
+BeanFactory
+-----------
+-> supports xml configuration only.
+-> It has one implementation class XmlBeanFactory(C).
+->It also known as legacy container.
+
+ApplicationContext
+-------------------
+-> It supports all type of configuration.
+Note: Spring framework suppoerts 3 types of configurations. 1.Xml 2.Java 3.Annotation
+->It has multiple implementation classes.
+Ex: 1.ClassPathXmlApplicationContext(C)
+    2.FileSystemXmlApplicationContext(C)
+    3.AnnotationConfigApplicationContext(C)
+->Spring framework helps to develop applications in a faster way, known as Rapid application development.
+->Less error rate.
+->Reduces duplicate code by providing boiler plate code.
+
+SPRING WEB:
+-----------
+->It is used to develop web applications.
+-> Spring web follows front controller design pattern. in this only one servlet will handle all type requests, and that servlet is known as dispathcher servlet.
+-> when a users comes to login page, they will provide their credentials(username & password).
+-> then a request object will be created and send to server. in server dispatcher servlet is present to accept that request.
+-> further dispatcher servlet will extract the URL present inside that request object and send it to "Handler Mapping".
+-> Handler Mapping contains all controllers name which are mapped with resective type of requests. example: login.html -> login.java
+-> then Handler Mapping will send the appropriate controller name to dispatcher servlet.
+-> further dispatcher servlet will send that request to respective "Controller".
+-> then controller will processs the request and in response provides model object and view name and sends it to dispatcher servlet.
+Note: Model object used to transefer the java object to view(html/jsp page).
+-> again dispatcher servlet will send the view name to "View Resolver". View Resolver checks that view is present or not. if present then it will send that view
+	to dispatcher servlet or else 404 error page will send to dispatcher servlet.
+-> futher dispatcher servlet will return the response to user.
+------------------------------------
+Spring Boot:
+------------
+-> its based upon spring framework.
+-> benifits of spring boot application over spring application,
+	1. we dont have to add dependencies mannually from maven repository.
+	2. no version mismathing of dependencies
+	3. helps to develop application rapidly by providing boilerplate code
+-> every java spring application has pom.xml file for maven applications, in case of gradle application its build.gradle file.
+-> it contains all the dependencies we require to develope the application.
+-> there are different types of architectures we can follow to develope an enterprise level application. majorly layer based architecture we follow.
+-> in "Layer Based Architecture" there can be many layers we can create as per our convenience but there are mainly 3 layers present in an application.
+	1. Controller layer
+	2. Service layer
+	3. Repository layer
+
+
+
+
+
+
+
 
 
 
