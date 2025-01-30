@@ -941,6 +941,7 @@ public class OptionalClassExample {
  3. Problem of navigation
  4. problem of grain
  5. problem of identity
+-> In ORM, one class will be mapped with one table. each column of table represents fields present inside class and each row represents ojbects. 
 -> To overcome these problem JPA standards has been specified. Any solution providers has to follow these standards.
 -> Different vendors provided their solution to overcome these ORM problems, like- Ibatis, topLink, hibernate
 -> By using hibernatte we can store objects into database.
@@ -962,6 +963,10 @@ SPRING CORE:
 ->DI: It refers to HAS-A relationship. One class has another classes object inside it, that means, 
 	we will inject one class object into another class by using '@Autowired' annotation.(We can do it using xml configuration as well).
 Note- Inheritance follows IS-A relationship where one class extends another class.
+-> DI further divided into 3types.
+	1. setter injection
+	2. constructor injection -> by using xml configuration  => <constructor-args></constructor-args>
+	3. field/property injection -> by using xml configuration  => <property></<property>
 ->Spring Core has spring container. It manages bean(objects inside spring container) life cycle.
 ->Spring Framework provides 2 containers.
  1. BeanFactory(old)(I)
@@ -972,6 +977,7 @@ BeanFactory
 -> supports xml configuration only.
 -> It has one implementation class XmlBeanFactory(C).
 ->It also known as legacy container.
+-> it supports simple java applications only.
 
 ApplicationContext
 -------------------
@@ -984,6 +990,7 @@ Ex: 1.ClassPathXmlApplicationContext(C)
 ->Spring framework helps to develop applications in a faster way, known as Rapid application development.
 ->Less error rate.
 ->Reduces duplicate code by providing boiler plate code.
+-> it supports imple java applications as well as web based applications.
 
 SPRING WEB:
 -----------
@@ -992,7 +999,7 @@ SPRING WEB:
 -> when a users comes to login page, they will provide their credentials(username & password).
 -> then a request object will be created and send to server. in server dispatcher servlet is present to accept that request.
 -> further dispatcher servlet will extract the URL present inside that request object and send it to "Handler Mapping".
--> Handler Mapping contains all controllers name which are mapped with resective type of requests. example: login.html -> login.java
+-> Handler Mapping contains all controllers name which are mapped with respective type of requests. example: login.html -> login.java
 -> then Handler Mapping will send the appropriate controller name to dispatcher servlet.
 -> further dispatcher servlet will send that request to respective "Controller".
 -> then controller will processs the request and in response provides model object and view name and sends it to dispatcher servlet.
@@ -1007,14 +1014,51 @@ Spring Boot:
 -> benifits of spring boot application over spring application,
 	1. we dont have to add dependencies mannually from maven repository.
 	2. no version mismathing of dependencies
-	3. helps to develop application rapidly by providing boilerplate code
+	3. helps to develop application rapidly by providing boilerplate code(boilerplates refers to common codes used for project building)
+	4. it provides started dependencies(started dependencies are multiple dependecies in a single bundle)
 -> every java spring application has pom.xml file for maven applications, in case of gradle application its build.gradle file.
--> it contains all the dependencies we require to develope the application.
+-> it contains all the dependencies which we require to develope the application.
 -> there are different types of architectures we can follow to develope an enterprise level application. majorly layer based architecture we follow.
 -> in "Layer Based Architecture" there can be many layers we can create as per our convenience but there are mainly 3 layers present in an application.
 	1. Controller layer
 	2. Service layer
 	3. Repository layer
+
+Annotaions:
+---------------------
+@SpringBootApplication: its a combination of @ComponentScan, @Configuration, @EnableAutoConfiguration
+@ComponentScan: its used to scan base packages for beans/objects
+@EnableAutoConfiguration: its used to enable project configuration automatically by spring container
+@Configuration: its used enable annotation based configuration
+@Component: it used to declare a class as an spring object
+@Bean: it used to create beans or objects.
+@Controller: it used to declare a class as controller. Basically it used for controller layer.
+@Service: it used to declare a class as service. Basically it used for service layer.
+@Repository: it used to declare a class as repository. Basically it used for repository layer.
+@Autowired: it used for dependency injection.
+@Entity: it used to make a class in entity. It maps class,fields with database table column.
+@Table: it used to create a table name
+@Id: it used todeclare a field as primary key.
+@GeneratedValue: it used to generate id automatically.
+@Column: it written above fields to provide the column name. 
+@RestController: ReST + Controller => ReST(Representational state transfer) its an architecture.
+		in web applications we use it to declare that the class is a controller which handles all type of web requests POST, GET, PATCH, DELETE etc..
+@RequestMapping:it used to map a url to controller.
+@PostMapping: it used for POST type url/endpoint. Generally we use it for insert operation.
+@GetMapping: it used for GET type url/endpoint.Generally we use it for read operation.
+@PutMapping: it used for PUT type url/endpoint.Generally we use it for update operation.
+@PatchMapping:it used for PATCH type url/endpoint.Generally we use it for partial update operation.
+@DeleteMapping:it used for DELETE type url/endpoint.Generally we use it for delete operation.
+@Getter:it is used to generate getter methods.
+@Setter:it is used to generate setter methods.
+@ToString:it is used to print object.
+@RequestBody:it is used to convert Json type object into userdefined object
+@PathVariable:It is used to extract values from url
+@RequestParam:it used to extract key value pairs fom url.
+
+
+
+
 
 
 
