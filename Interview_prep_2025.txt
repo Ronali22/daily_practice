@@ -1,5 +1,15 @@
-interview prep:-
+ interview prep:-
 ====================
+
+1. Core Java(OOPS Concept, Multithreading, exception, java8 features, collection)
+2. Hibernate
+3. Spring(Spring web, ORM, JEE, SPRING Core, AOP, JDBC)
+4. Spring boot
+5. Microservices(Eureka Server, API Gateway, Config server, Admin server, Zipkin and sleuth, Communication)
+6. SQL Queries
+7. GIT
+8. Spring Security
+
 JAVA:-
 ============
 OOPS[object oriented programming]
@@ -591,7 +601,7 @@ public class ArrayDequeEx {
 		ad.add(49);
 		ad.add(62);
 		System.out.println(ad);
-	}
+	}//
 
 }
 
@@ -604,7 +614,7 @@ Interface:
 -> Interface can also be inherited into another inteface by using extends keyword.
 -> Whenever interface is inherited then all abstract methods of an interface must be overridden in a sub class or sub class must be declared with abstract keyword otherwise compile time error occurs.
 -> an interface can contain concrete methods known as default methods.
--> as default methods introduced in java 1.7, to provide support to the older versions we have to provide "default" keyword as prefix to the concrete methods,
+-> as default methods introduced in java 1.7, to provide support to the older versions, we have to provide "default" keyword as prefix to the concrete methods,
    this is known as "backward compatibility".
 
 example:
@@ -676,6 +686,7 @@ public static void m3(String name){System.out.pritln(name)}; => (name) -> System
 -----------------------------
 -> an interface which having only one abstract method is known as functional interface.
 -> functional interface is used to invoke/call lambda expression.
+-> Comprator is example of functional interface which gives us compare() method.
 
 example:
 package com.InterviewPractice.example;
@@ -944,13 +955,14 @@ public class OptionalClassExample {
 -> In ORM, one class will be mapped with one table. each column of table represents fields present inside class and each row represents ojbects. 
 -> To overcome these problem JPA standards has been specified. Any solution providers has to follow these standards.
 -> Different vendors provided their solution to overcome these ORM problems, like- Ibatis, topLink, hibernate
--> By using hibernatte we can store objects into database.
+-> By using hibernate we can store objects into database.
 ->Servlets deals with web technology(old).
 -> In JSP we can write java and html code in the same page.
 
 SPRING FRAMEWORK:
 --------------------
--> Framework is like a half developed project, which contains pre-defined configurations, dependencies, methods, classes etc.. 
+-> Framework provides us some predefined functionalities.
+-> it's like a half developed project, which contains configurations, dependencies, methods, classes etc.. 
    which helps us to develop our application faster. Ex: Spring framework, hibernate framework
 -> Spring framework contains. 1. AOP 2.JDBC 3.ORM 4.JEE 5.MVC(WEB) 6.Spring core (IOC and DI) modules.
 -> By using spring framework, majorly web based applications can be developed.
@@ -1013,9 +1025,9 @@ Spring Boot:
 -> its based upon spring framework.
 -> benifits of spring boot application over spring application,
 	1. we dont have to add dependencies mannually from maven repository.
-	2. no version mismathing of dependencies
+	2. no version mismatching of dependencies
 	3. helps to develop application rapidly by providing boilerplate code(boilerplates refers to common codes used for project building)
-	4. it provides started dependencies(started dependencies are multiple dependecies in a single bundle)
+	4. it provides starter dependencies(starter dependencies are multiple dependecies in a single bundle)
 -> every java spring application has pom.xml file for maven applications, in case of gradle application its build.gradle file.
 -> it contains all the dependencies which we require to develope the application.
 -> there are different types of architectures we can follow to develope an enterprise level application. majorly layer based architecture we follow.
@@ -1033,15 +1045,16 @@ Annotaions:
 @Component: it used to declare a class as an spring object
 @Bean: it used to create beans or objects.
 @Controller: it used to declare a class as controller. Basically it used for controller layer.
-@Service: it used to declare a class as service. Basically it used for service layer.
-@Repository: it used to declare a class as repository. Basically it used for repository layer.
+@Service: it used to declare a class as service. Basically it used for service layer. it contains business logic.
+@Repository: it used to declare a class as repository. Basically it used for repository layer. this layer directly deals with database.
 @Autowired: it used for dependency injection.
 @Entity: it used to make a class in entity. It maps class,fields with database table column.
 @Table: it used to create a table name
 @Id: it used todeclare a field as primary key.
 @GeneratedValue: it used to generate id automatically.
 @Column: it written above fields to provide the column name. 
-@RestController: ReST + Controller => ReST(Representational state transfer) its an architecture.
+@RestController: ReST + Controller => ReST(Representational state transfer) its an architecture. it deals with json objects(json=> javascript object notation). 
+		it is used to transfer data via network. previously we were using XML to transfer data.(XML=> extensibile markup language)
 		in web applications we use it to declare that the class is a controller which handles all type of web requests POST, GET, PATCH, DELETE etc..
 @RequestMapping:it used to map a url to controller.
 @PostMapping: it used for POST type url/endpoint. Generally we use it for insert operation.
@@ -1052,12 +1065,172 @@ Annotaions:
 @Getter:it is used to generate getter methods.
 @Setter:it is used to generate setter methods.
 @ToString:it is used to print object.
-@RequestBody:it is used to convert Json type object into userdefined object
-@PathVariable:It is used to extract values from url
+@RequestBody:it is used to convert Json type object into userdefined object                                                                                          
+@PathVariable:It is used to extract values from url                                                                                                                                                                                                                                                                                              
 @RequestParam:it used to extract key value pairs fom url.
+ResponseEntity: it used to convert the reponse object into json type object.                                                                                               
 
+Note:
+------
+method signature:
+=========================
+<access modifier> <return type> <mehod name>(method input arguments...){
+	//method body
+}
 
+example:-
 
+	normal/general method						method using lambda expression
+-----------------------------------------------			------------------------------------------------------
+public void print(String name1, String name2){		=>	(name1, name2) -> System.out.println(name1,name2);
+	System.out.println(name1,name2);
+}
+
+example:
+list.stream().filter(e->e.getEmployeeSalary()>20000.00).collect(Collectors.toList());
+
+Task:
+=====
+//WAP to print how many female employees are there in the organization.
+//WAP to print the name of all departments in the org
+//WAP what is the average age of male and female employees in the org
+//WAP to find the details of highest paid employee
+//WAP to filter who has the most working exp in the org
+//WAP to count the number of employees in each department.
+//WAP to separate the employees who are younger or equal to 25 years and who are older than 25 years
+//WAP to  filter the name of employees who joined after 2015.
+
+1. list.stream().filter(e->e.getEmployeeGender()=="female").count
+	sout.println("Number of female empoyees are:");
+2.list.stream().map(e->e.getEmployeeDepartmentName()).collect(Collectors.toList()).forEach(System.out::println);
+3.Double avgOfMale = list.stream().filter(e->e.getEmployeeGender()=="Male").collect(collectors.averagingInt(e->e.getEmployeeAge()));
+  Double avgOfFemale = list.stream().filter(e->e.getEmployeeGender()=="Female").collect(collectors.averagingInt(e->e.getEmployeeAge()));
+4.Emp maxSalary = employeeList.stream().max((a,b)->(int)(a.getEmployeeSalary()-b.getEmployeeSalary())).get();
+                  System.out.println(maxSalary);
+5.Emp workingExp = employeeList.stream().max((a,b)->b.getEmployeeYearOfJoining()-a.getEmployeeYearOfJoining())).get();
+		System.out.println(workingExp);
+7.employeeList.stream().filter(e->e.getEmployeeAge()<=25).collect(Collectors.toList()).forEach(System.out::println);
+  employeeList.stream().filter(e->e.getEmployeeAge()>25).collect(Collectors.toList()).forEach(System.out::println);
+8.employeeList.stream().filter(e->e.getEmployeeYearOfJoining()>2015).collect(Collectors.toList()).forEach(e->System.out.println(e));
+=========================================================================================
+Microservice Architecture:
+--------------------------
+-> From front-end(client) user will send a http request which will come in json form to backend. in backend, server is there to receive the request.
+-> here API Gateway will be the 1st service which will take the request. it works as a entry point or gate keeper to our microservice application.
+-> then the request will go to eureka server. at eureka server it will get the microservice details associated with that request. then it will again comes back to API Gateway.
+-> further API Gateway will go to that service, like Registration service ,payment service,login service,food order service etc.. so inside that service controllers are there which will take the request and process it.
+-> after that the response comes into the api gateway and api gateway send it to front-end.
+-> In api-gateway there are other things also present like, 
+	i. SSO: which is working as an authentication service or security. 
+	ii. Routing: It is routing the request to it's respective service.
+	iii. Filter: it is used to check for the headers, cookies etc in the request.
+-> we will register all services at EurekaServer. it works as microservices registry and discovery purpose.
+-> All services common configurations are stored in a github/repo. from there config server picking configurations as per the services requirement.
+-> For inter communication between microservices, acive MQ and kafka is working as messaging service. They follows asynchronous way of communication and Rest template follows synchronous way of communication.
+-> Admin Server works as a actuator, which helps to check the health(RAM, CPU, service is up or down... etc... )of a microservice.
+-> Zipkin or sleuth works as a distributed tracing service, which helps to trace the flow of a request, that means how the request is going from one service to another.
+
+1. Eureka Server Internal flow:
+===============================
+-> every microservices needs to be registered at a single place, that is known as Eureka server.
+-> it contains all the details about microservice. like, the port number, number of instances etc..
+-> it helps API gateway to locate the microservice.
+
+How to create a microservice for Eureka Server:
+-------------------------------------------
+Step 1:
+-------
+Right click->new->spring starter->give project name->next->select dependency as Eureka server->next->finish
+
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+</dependency>
+
+Step-2:
+--------
+In application properties give Eureka properties file and change the port number.
+
+server.port=8761
+spring.application.name:EUREKA-SERVER SERVICE
+
+#Eureka
+eureka.instance.prefer-ip-address=true
+eureka.instance.hostname=localhost
+eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
+
+Step-3:
+--------
+In main, class give annotation @EnableEurekaServer
+
+Step-4:
+-------
+now inside every other services, we have to add a dependency as Eureka Client.
+
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+</dependency>
+
+Step-5:
+--------
+In application properties we have to add some configurations provided below,
+
+#Eureka
+eureka.instance.prefer-ip-address=true
+eureka.instance.hostname=localhost
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+eureka.client.register-with-eureka=true
+eureka.client.fetch-registry=true
+spring.cloud.compatibility-verifier.enabled=false
+==========================================================================================================================
+task:
+=====
+create an application whihc contains model classes as Product and Order.
+Order has 1. orderId, 2. orderQuantity, 3. orderAddress(only provide city name as address)
+Product has  1. productId, 2. productName, 3. productPrice, 4. productDescription
+
+create 2 controllers like 1. getAllOrders(note: contains both order and product details), 2. getOrderById
+one more controller getOrdersByAddress which will provide all the orders from same address
+
+2. Internal flow of API GATEWAY/Explain about API gateway:
+--------------------------------------------------------------
+-> when a request comes from user to server, api gateway will 1st validate the request structure.
+-> it checks for header, cookies, authorization etc.., if the request is structurally correct then
+ further it will send to eureka server as api gateway does not contains the microservices details.
+-> now eureka server will process the request came from api gateway and send the microservice's
+ details to api gateway in response.
+-> further api gateway will route the request to that perticular microservice.
+-> api gateway also provides security by the help of SSO[Single Sign On].
+
+3. Internal flow of Config Server:
+--------------------------------------
+->Config Server Service contains "config server" dependency. Another Microservice contains "config client" dependency.
+->A microservice sends request to config server then config server will send that request to github repo.
+->github repo contains properties which are common to all Microservices present in key value pair format in application.properties file.
+->Then, Git hub will sends those properties as response to config server and config server will provide those to microserice.
+
+4. Internal flow of Actuator and Admin Server:
+----------------------------------------------
+-> When we add actuator dependency in microservice, we get multiple endpoints which contains details about that microservice.
+-> But here, the problem was we have to check manually individual microservices for their details.
+->To overcome this issue, admin server came into picture. Admin sever provides a dashboard on which all the details of every microservice we can able to see visually.
+-> For example, we are having 2 microservices. one is admin server service and other is a registration service. here we will add two dependencies,
+(i) Admin server (ii) Admin Client
+->In Admin server service we will add spring-boot-admin-starter-server dependency i.e admin server dependency.
+->In Registration service we will add spring-boot-admin-starter-client dependency i.e admin client dependency.
+
+5. Microservices Communication:
+--------------------------------
+RestTemplate:
+--------------
+-> 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Interview Discussion:
+---------------------
+Marker interface: An interface without any abstract method, is known as marker interface. It doesn't contains any default method or any concrete method.
 
 
 
