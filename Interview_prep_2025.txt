@@ -1190,6 +1190,12 @@ Task:
   employeeList.stream().filter(e->e.getEmployeeAge()>25).collect(Collectors.toList()).forEach(System.out::println);
 8.employeeList.stream().filter(e->e.getEmployeeYearOfJoining()>2015).collect(Collectors.toList()).forEach(e->System.out.println(e));
 =========================================================================================
+Microserivce:
+=============
+-> Microservice, in other word its known as distributed application.
+-> that means while a monolithic application contains all types of services in a single applcation, a microservice will create indivisual service to handle individual tasks.
+-> these services will be interconnected.
+for example:- Swiggy application contains different services like food ordering, tracking, payment, registration, security etc.
 Microservice Architecture:
 --------------------------
 -> From front-end(client) user will send a http request which will come in json form to backend. in backend, server is there to receive the request.
@@ -1243,7 +1249,7 @@ In main class, give annotation @EnableEurekaServer
 
 Step-4:
 -------
-now inside every other services, we have to add a dependency as Eureka Client.
+now inside every other microservices, we have to add a dependency as Eureka Client.
 
 <dependency>
 	<groupId>org.springframework.cloud</groupId>
@@ -1281,6 +1287,19 @@ one more controller getOrdersByAddress which will provide all the orders from sa
 -> further api gateway will route the request to that perticular microservice.
 -> api gateway also provides security by the help of SSO[Single Sign On].
 
+How to create a microservice for API Gateway:
+------------------------------------------------
+Step-1: Add dependency "Gateway and Eureka Client" in pom.xml file..
+Step-2:In application.properties file add eureka properties file and change the port number
+       server.port=9595
+       spring.application.name=GATEWAY-SERVICE
+
+       eureka.client.service-url.defaultZone=http://localhost:8761/eureka
+       eureka.client.register-with-eureka=true
+       eureka.client.fetch-registry=true
+       eureka.instance.prefer-ip-address=true
+Step-3:
+
 3. Internal flow of Config Server:
 --------------------------------------
 ->Config Server Service contains "config server" dependency. Another Microservice contains "config client" dependency.
@@ -1289,6 +1308,24 @@ one more controller getOrdersByAddress which will provide all the orders from sa
 ->Then, Git hub will sends those properties as response to config server and config server will provide those to microservice.
 ->For example, we are having 5 microservices, and for each microservice having JPA and database connection properties. So, instead of writing it in every microservices,
 we will write these common properties in a github repo and will make use of it whenever required.
+
+How to create a microservice for Config Server:
+-----------------------------------------------
+Step-1:We have to add "config server" dependency in pom.xml file.
+Step-2:We have to add common configuration properties in github repo in key value pair in application.properties file.
+
+spring.application.name=ConfigServerExample1
+
+server.port=8888
+
+#github setup
+spring.cloud.config.server.git.uri=https://github.com/Ronali22/config_server_repo.git
+spring.cloud.config.server.git.username=Ronali22
+spring.cloud.config.server.git.password=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
+spring.cloud.config.server.git.default-label=main
+
+step-3:In main class we have to add @EnableConfigServer annotation.
+
 
 4. Internal flow of Actuator and Admin Server:
 ----------------------------------------------
@@ -1300,6 +1337,19 @@ we will write these common properties in a github repo and will make use of it w
 ->In Admin server service we will add spring-boot-admin-starter-server dependency i.e admin server dependency.
 ->In Registration service we will add spring-boot-admin-starter-client dependency i.e admin client dependency.
 
+How to create a microservice for Actuator:
+-----------------------------------------------
+Step-1:add actuator and spring web dependencyin pom file.
+Step-2:to expose all the endpoints we have add:
+       management.endpoints.web.exposure.include=*
+step-3:In controller class,we ahve to add @RestController annotation before the class name as admin server provides multiple endpoints to know the details ogf microservice.
+step-4:we have to give @GetMapping annoation adn provide a url, as we are doing a GET type of operation here
+
+How to create a microservice for Admin Server:
+-----------------------------------------------
+Step-1: Add admin server dependency in pom file
+step-2:in application.properties file give port number an dapplication name
+step-3:In main class add @EnableAdminServer annotation
 5. Microservices Communication:
 --------------------------------
 RestTemplate:
@@ -1338,6 +1388,8 @@ Step:3
 2.Close circuit:Initially circuit breaker is in closed state.i.e. both microservices are connected and able to exchange request/response.
 3.Half-Open circuit: initially circuits are in closed state. then when we start sending requests, if 50% of threshold limit get successfully sent to producer service then the circuit will remain in closed state else it will go to half open state.
 further if the requests still fails then the circuits will go to open state.
+
+
 
 Spring Security:
 -----------------
