@@ -1,4 +1,4 @@
- interview prep:-
+interview prep:-
 ====================
 
 1. Core Java(OOPS Concept, Multithreading, exception, java8 features, collection)
@@ -12,6 +12,78 @@
 
 JAVA:-
 ============
+
+JVM Architecture:
+-----------------
+->It's a run time engine, responsible to run java based applications.
+->It has two main tasks.
+  1.load .class file
+  2.execute .class file
+->JVM Architecture contains 5 components.
+1.Class Loader:
+----------------
+-> it used to load class files.
+-> it is responsible for 3 tasks. a. loading, b. linking, c. initialization
+2. Memory Areas:
+-----------------
+-> it has 5 types of memory areas.
+	a. method area
+	b. heap area(scp present inside thihs known as meta space)
+	c. stack area
+	d. pc register
+	e. native method area
+3. Execution engine:
+---------------------
+-> it contains 3 components.
+	a.interpreter
+	b. JIT compiler
+	c. garbage collector/security manager
+4. java native interfaces
+5. native method libraries
+
+static vs nonstatic.
+Static:
+->Defined within a class by using static keyword.
+->Static is also known as class variable.
+->Memory allocated at the time of class is loaded.
+->Can be referred using class name or object reference.(object reference is not preferred.)
+Non-static:
+->Defined within a class without using static keyword.
+->Non-Static is also known as  instance variable.
+->Memory allocated at the time of object is created.
+->Can be referred using object reference only.
+
+What are JVM,JRE and JDK.
+Ans: ->JDK:Java Development Kit.
+     ->JDK is a complete software package which has every tools for development of a java program.
+     ->JDK has JRE,JAR tools,compiler,Debugger etc..
+     ->JRE:Java Runtime Environment
+     ->JRE contains JVM & standard Runtime Libraries.
+     ->JRE is a part of JDK, which provides a platform to execute java application.
+     ->JVM: Java Virtual Machine
+     ->JVM executes the byte code.
+     ->JVM has the class loader,JIT compiler(Just In Time Complier),garbage collector
+     ->It is a runtime instance which is created when we run the java class.
+
+How does Java achieve platform independence?
+Ans: ->When we create a java progarm, source code compiled into byte code by JVM and it generate a .class file.
+     ->This .class file, we can run it in any operating system.Exa:Linux,IOS,WINDOWS
+     ->This is why Java is known as platform independent.Java follows WORA(Write Once Read Anywhere).
+
+String:
+-------
+-> in java String is a class.
+-> we can create a String using different ways, 1. using new keyword, 2. by string literals
+ex: String s1 = new String("car");//new keyword
+    String s2 = "bike";//literals
+Q. Why String is immutable in Java?
+->When we create a string using new keyword, it will create string object in HeapMemory as well as SCP(String Constant Pool).
+->When we create a string using literal, it will create string object only in SCP.
+->When we try to create another string using literal, it will check in SCP, whether it is already present or not.
+  If it is present, then the variable will point towards existing object. So, if we try to change the value, then other variable also get affected as all are pointing towards same object.
+-> similarly when we try to create string object using new keyword, it will create new object every time even if the string value is same.
+thats why string is immmutable in java.
+
 OOPS[object oriented programming]
 ----------------------------------
 Note: 
@@ -340,9 +412,35 @@ public class ThrowAndThrowsExample {
 ---------------------------------------------------------------
 multithreading:
 ------------------
--> thread can be created 
+-> in programming we are having multi tasking. this can be of two types. 
+1. multiprocess: multiple processes like playing video on vlc media, working on ide, listening music etc we can do simultaneously. this is know to be multiprocess
+	process: process ia an independent task. its is having its own resources and memory. example:vlc media, working on ide, listening music etc
+2. multithreading:Multithreading is a process of execution of more than one thread at a time or simulateneously.
+->In multithreading threads are sharing a common resource or memory.
+-> thread can be created in 2 ways.
 1. by extending Thread class
 2. by implementing Runnable interface
+
+Thread: thread is an independent path of execution. thread is a light weight process. Thread class is present inside java.lang package.
+
+-> A thread can not be started more than once. if we try to do so then it will throw IllegalThreadStateException.
+Types of thread:
+----------------
+1. Deamon thread:
+	-> these are low priority threads which performs low priority tasks like checking for updates, maintaining history/backups etc..
+	-> JVM does not give much importance to these types of threads.
+2. non deamon thread:
+	-> these are high priority tasks used to carry the main tasks. JVM gives much importance to it.example: main thread in an java programm(refers to main method)
+-> by default a thread is deamon or non deamon that is depends on parent thread. if parent thread is deamon then child thread will also be a deamon thread.
+-> we can set a thread as deamon by using "setDeamon() as true".
+-> we should set the thread as deamon or nondeamon before starting it.
+Thread priority:
+---------------
+-> every thread has priority level. it veries from 1 to 10. 1 means low 10 means high.
+-> based on the priority of a thread, thread scheduler schedules the thread execution.
+-> by default a thread priority is same as the parent thread's priority.
+-> main threads priority is 5.
+-> we can set a threads priority by using setPriority() method.
 
 example:1
 -----------
@@ -383,31 +481,6 @@ public class MultithreadingExample {
 		
 	}
 }
-
--> in programming we are having multi tasking. this can be of two types. 
-1. multiprocess: multiple processes like playing video on vlc media, working on ide, listening music etc we can do simultaneously. this is know to be multiprocess
-	process: process ia an independent task. its is having its own resources and memory. example:vlc media, working on ide, listening music etc
-2. multithreading:carrying multiple tasks in a single process with the help of multiple threads is known as multithreading.
-	-> in multi threading all the threads are sharing a common resource.
-
-Thread: thread is an independent path of execution. thread is a light weight process. Thread class is present inside java.lang package.
-
--> A thread can not be started more than once. if we try to do so then it will throw IllegalThreadStateException.
-Types of thread:
-1. Deamon thread:
-	-> these are low priority threads which performs low priority tasks like checking for updates, maintaining history/backups etc..
-	-> JVM does not give much importance to these types of threads.
-2. non deamon thread:
-	-> these are high priority tasks used to carry the main tasks. JVM gives much importance to it.example: main thread in an java programm(refers to main method)
--> by default a thread is deamon or non deamon that is depends on parent thread. if parent thread is deamon then child thread will also be a deamon thread.
--> we can set a thread as deamon by using "setDeamon() as true".
--> we should set the thread as deamon or nondeamon before starting it.
-Thread priority:
--> every thread has priority level. it veries from 1 to 10. 1 means low 10 means high.
--> based on the priority of a thread, thread scheduler schedules the thread execution.
--> by default a thread priority is same as the parent thread's priority.
--> main threads priority is 5.
--> we can set a threads priority by using setPriority() method.
 ------------------------------------------------------------
 Collections Framework:
 ------------------------
@@ -415,7 +488,8 @@ Collections Framework:
 ---------
 (i) ArrayList:
 --------------
--> It is the array representation of list implementation class.
+-> It is a list implementation class.
+-> it follows array representation.
 ->it allows duplicate elements as it implements list interface.
 
 package com.InterviewPractice.collection;
@@ -437,7 +511,8 @@ public class ArrayListEx {
 
 (ii) LinkedList:
 -----------------
--> It is the linked representation of list implementation class.
+-> It is a list implementation class.
+-> it follows linked representation.
 -> it allows duplicate elements as it implements list interface.
 -> stores elements in insertion order.
 
@@ -972,7 +1047,7 @@ SPRING CORE:
 -> It has IOC and DI concept.
 ->IOC- Inversion of Control. DI- Dependency Injection.
 ->IOC: Inverting(providing) the power of object creation from developer to spring container.
-->DI: It refers to HAS-A relationship. One class has another classes object inside it, that means, 
+->DI(Dependency Injection): It refers to HAS-A relationship. One class has another classes object inside it, that means, 
 	we will inject one class object into another class by using '@Autowired' annotation.(We can do it using xml configuration as well).
 Note- Inheritance follows IS-A relationship where one class extends another class.
 -> DI further divided into 3types.
@@ -1036,7 +1111,7 @@ Spring Boot:
 	2. Service layer
 	3. Repository layer
 
-Annotaions:
+Annotations:
 ---------------------
 @SpringBootApplication: its a combination of @ComponentScan, @Configuration, @EnableAutoConfiguration
 @ComponentScan: its used to scan base packages for beans/objects
@@ -1050,13 +1125,13 @@ Annotaions:
 @Autowired: it used for dependency injection.
 @Entity: it used to make a class in entity. It maps class,fields with database table column.
 @Table: it used to create a table name
-@Id: it used todeclare a field as primary key.
+@Id: it used to declare a field as primary key.(note: works only with integer/int type of id)
 @GeneratedValue: it used to generate id automatically.
-@Column: it written above fields to provide the column name. 
+@Column: it written above fields to provide the column name or modified column name. 
 @RestController: ReST + Controller => ReST(Representational state transfer) its an architecture. it deals with json objects(json=> javascript object notation). 
 		it is used to transfer data via network. previously we were using XML to transfer data.(XML=> extensibile markup language)
 		in web applications we use it to declare that the class is a controller which handles all type of web requests POST, GET, PATCH, DELETE etc..
-@RequestMapping:it used to map a url to controller.
+@RequestMapping:it used to map a url to controller.We can povide the base url using it.
 @PostMapping: it used for POST type url/endpoint. Generally we use it for insert operation.
 @GetMapping: it used for GET type url/endpoint.Generally we use it for read operation.
 @PutMapping: it used for PUT type url/endpoint.Generally we use it for update operation.
@@ -1068,6 +1143,8 @@ Annotaions:
 @RequestBody:it is used to convert Json type object into userdefined object                                                                                          
 @PathVariable:It is used to extract values from url                                                                                                                                                                                                                                                                                              
 @RequestParam:it used to extract key value pairs fom url.
+@Value: it is used to take user input from application properties file dynamically.
+@Query: it is used to enable native query/sql query into our spring application.
 ResponseEntity: it used to convert the reponse object into json type object.                                                                                               
 
 Note:
@@ -1162,7 +1239,7 @@ eureka.client.fetch-registry=false
 
 Step-3:
 --------
-In main, class give annotation @EnableEurekaServer
+In main class, give annotation @EnableEurekaServer
 
 Step-4:
 -------
@@ -1208,8 +1285,10 @@ one more controller getOrdersByAddress which will provide all the orders from sa
 --------------------------------------
 ->Config Server Service contains "config server" dependency. Another Microservice contains "config client" dependency.
 ->A microservice sends request to config server then config server will send that request to github repo.
-->github repo contains properties which are common to all Microservices present in key value pair format in application.properties file.
-->Then, Git hub will sends those properties as response to config server and config server will provide those to microserice.
+->github repo contains properties which are common to all Microservices, present in key value pair format in application.properties file.
+->Then, Git hub will sends those properties as response to config server and config server will provide those to microservice.
+->For example, we are having 5 microservices, and for each microservice having JPA and database connection properties. So, instead of writing it in every microservices,
+we will write these common properties in a github repo and will make use of it whenever required.
 
 4. Internal flow of Actuator and Admin Server:
 ----------------------------------------------
@@ -1225,20 +1304,416 @@ one more controller getOrdersByAddress which will provide all the orders from sa
 --------------------------------
 RestTemplate:
 --------------
--> 
+-> for intercommunication of microservices we use rest template.
+-> by using this synchronous way of communication can be done.
+-> it follows producer and consumer concept, where consumer will send a request to producer and producer will send response.
+-> steps to implement rest template;
+Step:1
+-> create producer applciation with all types of endpoints(POST,PUT,DELETE,PATCH,GET etc..)
+Step:2
+-> create a consumer application. At controller layer we will make use of RestTemplate to send request to producer app and consume the response coming from it.
+Step:3
+->for consuming different types of producer endpoints we are having differnet methods which we can use in consumer application to consume the responses,
+	producer's post type endpoint we can use postForEntity method at consumer,
+	producer's get type endpoint we can use getForEntity method at consumer,
+	producer's put,delete,patch type endpoints we can use exchange method at consumer.
 
+6.Zipkin/Sleuth:
+-----------------
+-> When a request going through various microservices, to know that flow, we need to track that request. For this, purpose we are using zipkin and sleuth can be used.
+->Trace Id: to track the entire flow of a request through microservices, we need one unique id is known as Tracing Id.
+->Span Id: to know about the individual microservices log information, there will be one id, known as span Id.
+-> in each  microservice we need to add two dependencies. 1. sleuth 2. zipkin client
+->Sleuth is a dependency which is associated with each microservice and it helps to generate trace information.
+->Zipkin client takes trace info of individual service from sleuth, then it sends that information to Zipkin server.
+->Zipkin server is a central server which collects all data coming from zipkin clients and show it on a dashboard.
+-> zipkin server provides some features like we can filter traceid's, by their id's, by date, by time etc.etc.
+
+7. Circuit Breaker:
+=======================             
+->The concept of a circuit breaker is to prevent calls to microservice when its known, that the call may get fail or timeout.
+->Spring clouds resiliance4j is an api given for circuit breaker concept.It also called as Fault Tolerance API, it reduces error rate by stopping execution of failure services.
+->3 types of circuit concept exist. 
+1.Open circuit:In this state requests to other microservices will not be executed.Fallback method will be used to handle this type of scenarios.(Note: Fallback method: This returns a response message[error message] on behalf of failed microservice.)
+2.Close circuit:Initially circuit breaker is in closed state.i.e. both microservices are connected and able to exchange request/response.
+3.Half-Open circuit: initially circuits are in closed state. then when we start sending requests, if 50% of threshold limit get successfully sent to producer service then the circuit will remain in closed state else it will go to half open state.
+further if the requests still fails then the circuits will go to open state.
+
+Spring Security:
+-----------------
+-> from user, request comes to dispatcher servlet, then further it will sent to handler mapping,controller and view resolver.
+-> so before request comes to dispatcher servlet, we can add security. for this a Filter can be added.
+-> to implement security, we are having Filter(I). further java provides one implementation class of it, known as DelegatingFilterProxy. it contains one overloaded method "configure(...)".
+-> one configure method used for authentication of user and other configure method used for authorization purpose.
+-> Authentication: validating user credentials(username, password).
+-> Authorization: validating user role or permission to access any page.
+-> status codes to remember;
+	-> when user credentials are incorrect we get 401 - unauthorized
+	-> when user loggedin successfully with their credentials but not having the permission to access a specific page we get 403 - forbidden
+	-> 200 - OK(success)
+	-> 201 - Created
+	-> 400 - bad request
+	-> 404 - resource not found
+	-> 500 - internal server error
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 Interview Discussion:
 ---------------------
 Marker interface: An interface without any abstract method, is known as marker interface. It doesn't contains any default method or any concrete method.
+Idempotency: For any type of request, if we are getting similar response, is known as idempotent. Example: GetMapping, PUTMapping, DELETEMapping.
+
+final:this keyword we can use it before a variable, method, class.
+	if it placed before a variable then that variable's value can not be changed.
+	if it placed before a method then that method can not be overridden.
+	if it placed before a class name then it can not be extends or inherited.
+finally:it used with try catch block to perfom some end tasks.
+finalize:it uses for garbage collection.
+
+use of pom file?
+use of application properties file?
+what is dependencies?
+flow of mvc architecture?
+can we addd sql queries directly into application?how?
+microservice application vs monolithic applicaiton?
+what is thread.sleep()?
+why we use hbm-ddl-auto?
+comparable vs comparator?
+static vs nonstatic?
+interface vs abstract classes?
+waht is actuators?why to use?
+why to use api gateway?
+why java is platform independent?
+why string is immutable in java?
+
+Vehicle{
+	
+	int vehicleNo;
+
+	Car{
+		String carBrand;
+
+	}
+
+}
+
+Vehicle.vehicleNo;
+Car.carBrand;`
+Vehicle.Car.carBrand;
 
 
+1. Use of pom file
+->POM->Project Object Model
+->it contains artifact id(application name), group id(base package name),name,version,dependencies,plugins etc..
+->Every java spring application has pom.xml file for maven applications, in case of gradle application its build.gradle file.
 
+2.Using application.properties file
+->It contains configuration properties for the application in key,value pairs
+->For example we are adding JPA properties,database url and credentials and providing server port number.
 
+3.Dependencies:
+->Dependencies are nothing but a jar files only, which we require while building the application.
 
+4.Flow of MVC Architecture:
+->It is used to develop web applications.
+-> Spring web follows front controller design pattern. in this only one servlet will handle all type requests, and that servlet is known as dispathcher servlet.
+-> when a users comes to login page, they will provide their credentials(username & password).
+-> then a request object will be created and send to server. in server dispatcher servlet is present to accept that request.
+-> further dispatcher servlet will extract the URL present inside that request object and send it to "Handler Mapping".
+-> Handler Mapping contains all controllers name which are mapped with respective type of requests. example: login.html -> login.java
+-> then Handler Mapping will send the appropriate controller name to dispatcher servlet.
+-> further dispatcher servlet will send that request to respective "Controller".
+-> then controller will processs the request and in response provides model object and view name and sends it to dispatcher servlet.
+Note: Model object used to transefer the java object to view(html/jsp page).
+-> again dispatcher servlet will send the view name to "View Resolver". View Resolver checks that view is present or not. if present then it will send that view
+	to dispatcher servlet or else 404 error page will send to dispatcher servlet.
+-> futher dispatcher servlet will return the response to user.
 
+5.can we addd sql queries directly into application?how?
+->Yes,we can add sql queries directly into application by using @Query annotation and give the condition as nativeQuery = true and then give SQL query as value.
 
+6.microservice application vs monolithic applicaiton?
+->
 
+7.what is Thread.sleep()?
+->Thread.sleep() is used to pause the execution of the current thread for a specified time.
 
+8.why we use hbm-ddl-auto?
+->This the property we are using in application.properties file.
+->This property is use for create and draw table automatically.
 
+9.comparable vs comparator?
+Comparable: 
+->This method provides compareTo() method.
+->It has one arguments.
+->It's present in java.lang package.
+->It's known as natural ordering.
+Comparable:
+->This method provides compare() method.
+->It has two arguments.
+->It's present in java.lang.util package.
+->It's known as customize ordering.
 
+10.static vs nonstatic?
+Static:
+->Defined within a class bu using static keyword.
+->Static is also known as class variable.
+->Memory allocated at the time of class is loaded.
+->Can be referred using class name or object reference.(object reference is not preferred.)
+Non-static:
+->Defined within a class without using static keyword.
+->Non-Static is also known as  instance variable.
+->Memory allocated at the time of object is created.
+->Can be referred using object reference only.
+
+11.interface vs abstract classes?
+Interface:
+->Interface is a collection of public static final variables and public abstract methods.
+->By using interface keyword, we can declare interface.
+->Interface can have only abstract methods but from java 8, interface contatins concrete methods, known as default method.
+-> Interface can contain static method as well.
+Abstract class:
+->Class declared with abstract keyword is known as abstarct class.
+->By using abstarct keyword, we can declare abstarct class.
+->Abstarct class can have abstarct and non-abstarct methods.
+
+12.waht is actuators?why to use?
+->When we add actuator dependency in microservice, we get multiple endpoints which contains details about that microservice.
+->But here, the problem was we have to check manually individual microservices for their details.
+->To overcome this issue, admin server came into picture. Admin sever provides a dashboard on which all the details of every microservice we can able to see visually.
+-> For example, we are having 2 microservices. one is admin server service and other is a registration service. here we will add two dependencies,
+(i) Admin server (ii) Admin Client
+
+13.why to use api gateway?
+->when a request comes from user to server, api gateway will 1st validate the request structure.
+-> it checks for header, cookies, authorization etc.., if the request is structurally correct then
+ further it will send to eureka server as api gateway does not contains the microservices details.
+-> now eureka server will process the request came from api gateway and send the microservice's
+ details to api gateway in response.
+->further api gateway will route the request to that perticular microservice.
+->api gateway also provides security by the help of SSO[Single Sign On].
+
+16.why java is platform independent?
+->When we write a java program, source code is compiled into bytecode as our system can understand and execute.
+ Here,JVM acts as an interpreter for the bytecode. So, Java is a platform independent.
+	.java ->  byte code -> binary code
+
+15.why string is immutable in java?
+->When we create a string using new keyword, it will create string object in HeapMemory as well as SCP(String Constant Pool).
+->When we create a string using literal, it will create string object only in SCP.
+->When we try to create another string using literal, it will check in SCP, whether it is already present or not.
+  If it is present, then the variable will point towards existing object. So, if we try to change the value, then other variable also get affected as all are pointing towards same object.
+->Similarly when we try to create string object using new keyword, it will create new object every time even if the string value is same.
+thats why string is immmutable in java.
+
+List<Employee> result=employeeList.stream().sort((e1,e2)->(e2.getEmployeeAge()-e1.getEmployeeAge()).collect(Collectors.toList());
+
+Difference between ArrayList and LinkedList:
+--------------------------------------------
+ArrayList:
+---------
+->It is the Array representation.
+->It uses an array to store elements.Which makes it fast to retrieve an element.
+->But it's less efficient for inserting or deleting elements in the middle because elements needs to be shifted.
+
+LinkedList:
+-----------
+->It is the List representation.
+->here, each element is stored in a node, Which contains refrences to the next and previous nodes. This makes it efficient for inserting or deleting
+  elemets at any position in the list.
+->But it's not preferred when we need fast random access to an element.
+
+Steps Of JDBC
+--------------
+Step 1: Load and register the driver
+Step 2: Establish connection between Java program and database
+step3:create platform to execute sql query
+step4:execute sql query
+step5:Fetch and print result
+step6:close costly resources
+
+Steps Of Hibernate
+-------------------
+Step1: Configuration[C]
+	-> provides connection properties
+	-> provides mapping information
+	-> used to get reference of SessionFactory
+Step2: SessionFactory[I]
+	-> configures db
+	-> manage connections
+	-> provides reference of Session
+Step3: Session[I]
+	-> Session is a live connection between app and db
+	-> it does crud operations
+	-> gives reference of Transaction, Criteria, Query
+Step4: Transaction[I]
+	-> commits or roll back
+
+`
+
+@Data=> its a lombok annotation. it contains default constucor, setters and getters, tostring.
+@NoArgsConstructor=> signifies default constructor
+@AllArgsConstructor=> signifies parameterized constructor
+
+Spring Boot Questions:
+----------------------
+1. What is Spring Boot? How it differ from Spring.
+Ans: ->Spring Boot is a spring module, which is part of a spring framework.
+     ->Benefits of Springboot over spring:
+  i. We don't have to add dependencies manually from maven repository.
+  ii. No version mismatching of dependencies.
+  iii. It helps to develop application rapidly by using boilerplate code(boilerplate refers to coomon codes used for project building)
+  iv. It provides starter dependencies.
+
+2.What is the purpose of Spring Boot starters?
+Ans:
+
+3.Diff. b/w @Component, @Service and @Repository.
+Ans: @Component: It is used to declare a class as an spring object. It's a class-level annotation
+     @Service: It is used to declare a class as service. It is used in service layer. It tells spring that it contains business logic.
+     @Repository: It is used to declare a class as Repository. It is basically used in repository layer.This layer directly deals with database.
+
+4.How does spring boot manages dependency injection?
+Ans: -> Dependency Injection follows Has-A relationship concept. That means one class has another class onject inside it.
+     ->We can inject one class object into another class by using @Autowired annotation. We can do it by using xml configuration also.
+     ->We are using @Bean annotation to create bean or objects. It is a method-level annotation. It is alternative of XML<bean> tag.
+
+5.How does springboot support microservices?
+Ans: ->
+
+6.What is Spring Boot Actuator?
+Ans:->Admin server works as a actuator, which is used to check the health of our application(like: Working condition of CPU, Service is up or down etc..)
+    ->When we add actuator dependency, it gives us multiple endpoints, whcih contains details about that microservice.
+    ->But here the problem is, we have to check manually individual microservices for their details.
+    ->To overcome this problem, Admin server came into picture. It provides us a dashboard, which contails every details of microservice.
+    ->For example, we are having 2 microservices. one is admin server service and other is a registration service. here we will add two dependencies,
+      (i) Admin server (ii) Admin Client
+   ->For Admin server service we will add admin server dependency.
+   ->For Registration service we will add admin client dependency.
+
+7.Diff. b/w CRUD Repository and JPA Repository.
+Ans: CRUD Repository:
+    ->CRUD Repository is a interface, available in spring boot applocations.
+    ->It contains methods for doing CRUD operations.
+    ->In CRUD repository we can do CREATE,READ,UPDATE,DELETE operations.
+    JPA Repository:
+    ->
+
+8.How does Spring Boot handle database interactions?
+Ans: ->
+
+9.How does Spring security work?
+Ans: -> from user, request comes to dispatcher servlet, then further it will sent to handler mapping,controller and view resolver.
+     -> So, before request comes to dispatcher servlet, we can add security. for this a Filter can be added.
+     -> to implement security, we are having Filter(I). further java provides one implementation class of it, known as DelegatingFilterProxy. 
+        It contains one overloaded method "configure(...)".
+     -> one configure method used for authentication of user and other configure method used for authorization purpose.
+     -> Authentication: validating user credentials(username, password).
+     -> Authorization: validating user role or permission to access any page.
+
+10.What is caching in spring boot?
+Ans:
+
+11.How does spring boot handle exception handling?
+
+Core Java interview Qus:
+------------------------
+1. What are JVM,JRE and JDK.
+Ans: ->JDK:Java Development Kit.
+     ->JDK is a complete software package which has every tools for development of a java program.
+     ->JDK has JRE,JAR tools,compiler,Debugger etc..
+     ->JRE:Java Runtime Environment
+     ->JRE contains JVM & standard Runtime Libraries.
+     ->JRE is a part of JDK, which provides a platform to execute java application.
+     ->JVM: Java Virtual Machine
+     ->JVM executes the byte code.
+     ->JVM has the class loader,JIT compiler(Just In Time Complier),garbage collector
+     ->It is a runtime instance which is created when we run the java class.
+
+2.How does Java achieve platform independence.
+Ans: ->When we create a java progarm, source code compiled into byte code by JVM and it generate a .class file.
+     ->This .class file, we can run it in any operating system.Exa:Linux,IOS,WINDOWS
+     ->This is why Java is known as platform independent.Java follows WORA(Write Once Read Anywhere).
+
+3.How does java handle memory management?
+Ans:
+
+4.Diff. b/w == and .equals()
+Ans:-> == is a comparision operator.(= is assignment operator)
+    ->It uses to compare 2 objects address. If both are equal, then it will return true, else it will return false.
+    ->.equals() compares two objects with respect to their content.
+
+5.Diff b/w Synchronized and volatile?
+Ans:
+
+6.How does java handle thread communication?
+Ans:
+
+JVM Architecture:
+-----------------
+->JVM Architecture contains 5 components.
+1.Class Loader:
+----------------
+-> it used to load class files.
+-> it is responsible for 3 tasks. a. loading, b. linking, c. initialization
+2. Memory Areas:
+-----------------
+-> it has 5 types of memory areas.
+	a. method area
+	b. heap area(scp present inside thihs known as meta space)
+	c. stack area
+	d. pc register
+	e. native method area
+3. Execution engine:
+---------------------
+-> it contains 3 components.
+	a.interpreter
+	b. JIT compiler
+	c. garbage collector/security manager
+4. java native interfaces
+5. native method libraries
+
+JUnit:
+-------
+->When developer writes a piece of code, that code has to be tested before sending it to QA.For this, developer takes help of JUnit.
+->While testing a method we ahve to add 'test' as prefix or suuffix to the method name.
+->There are different annotations we use for Junit testing, below:
+@DisplayName:used to provide a display name for test method
+@Test:used to mark a method as a test method
+@Tag:used to provide a tag wrt environment
+assertions:To test different conditions we require assertions.There are different assertion condition are there,i.e assertEquals,assertNull,assertNotEqual etc..
+@BeforeAll:This code block should execute before all method
+@BeforeEach:This code block should execute before each method.
+@Disabled:It disables the method
+@Order:It helps to execute the method in an defined order
+@TestMethodOrder:Used to configure a method order for executing test methods.
+@RepeatedTest:used to define how many times we want to execute a method
+@AfterEach:This code block should execute after each method.
+@AfterAll:This code block should execute after all method
+->To make JUnit testing easier, we are having different frameworks as well.For example. Mockito, wire mock etc...
+->Mockito framework is based upon mocking concept.Different annotations we use here, like:
+@Mock:It is used to create mock/dummy object
+@InjectMock:It helps to inject mock beans or mock objects into the provided class.
+->To test controller layer, we have to mock service and repository whereas we have to use @InjectMock annotation for conroller.
+->To test Service layer, we have tp mock repository layer and we ahve to use @InjectMock annotation for service.
+
+JIRA
+====
+-> it helps implementing agile methodology in a project.
+-> generally client provides requirements. then BA[bussiness anlyst] will create features out of these requirements.
+-> further the feature will be divided into tasks.
+-> TL[team lead] will further decides how many tasks can be delivered for that sprint.
+-> A sprint usually takes 15days to complete.
+-> further TL will assign tasks to developers and developers starts to work upon those userstories after understanding the requirements.
+-> all these things are getting done using this JIRA tool.
+-> it helps to manage all the development work flow and manange the team efforts.
+
+GIT
+===
+-> it stands for version control system.
+-> while working in a project multiple members can be working in a single repository. so GIT helps to manage different versions of code base.
+-> it provides different commands to operate over repository.
+	git init=> initializes git on a folder/location
+	git add=> add files from untracked to staging area
+	git commit -m "msg"=> commits our local changes in local repo
+	git push=> sends all the local commits to remote repo, it will not send the changes which are not commited in local.
+	git pull=> pulls all remote changes to local repo
+	
