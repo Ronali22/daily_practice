@@ -28,7 +28,7 @@ JVM Architecture:
 -----------------
 -> it has 5 types of memory areas.
 	a. method area
-	b. heap area(scp present inside thihs known as meta space)
+	b. heap area(scp present inside this known as meta space)
 	c. stack area
 	d. pc register
 	e. native method area
@@ -628,7 +628,7 @@ public class TreeSetEx {
 
 (i) Priority Queue:
 --------------------
--> in priority queue lease element is the highest priority.
+-> in priority queue least element is the highest priority.
 -> it allows duplicate elements.
 ->Here offer() method is used to insert the elements and poll() method is used to delete the elements.
 ->here, insertion order is not preserved.
@@ -1037,8 +1037,7 @@ public class OptionalClassExample {
 SPRING FRAMEWORK:
 --------------------
 -> Framework provides us some predefined functionalities.
--> it's like a half developed project, which contains configurations, dependencies, methods, classes etc.. 
-   which helps us to develop our application faster. Ex: Spring framework, hibernate framework
+-> it's like a half developed project, which contains configurations, dependencies, methods, classes etc.. which helps us to develop our application faster. Ex: Spring framework, hibernate framework
 -> Spring framework contains. 1. AOP 2.JDBC 3.ORM 4.JEE 5.MVC(WEB) 6.Spring core (IOC and DI) modules.
 -> By using spring framework, majorly web based applications can be developed.
 
@@ -1074,10 +1073,13 @@ Note: Spring framework suppoerts 3 types of configurations. 1.Xml 2.Java 3.Annot
 Ex: 1.ClassPathXmlApplicationContext(C)
     2.FileSystemXmlApplicationContext(C)
     3.AnnotationConfigApplicationContext(C)
+	
+Advantages or why we use Spring framework:
+-------------------------------------------	
 ->Spring framework helps to develop applications in a faster way, known as Rapid application development.
 ->Less error rate.
 ->Reduces duplicate code by providing boiler plate code.
--> it supports imple java applications as well as web based applications.
+-> it supports simple java applications as well as web based applications.
 
 SPRING WEB:
 -----------
@@ -1116,9 +1118,9 @@ Annotations:
 @SpringBootApplication: its a combination of @ComponentScan, @Configuration, @EnableAutoConfiguration
 @ComponentScan: its used to scan base packages for beans/objects
 @EnableAutoConfiguration: its used to enable project configuration automatically by spring container
-@Configuration: its used enable annotation based configuration
+@Configuration: its used enable annotation based configuration, it declares that the class is containning some configurations. its a class level annotaion.
 @Component: it used to declare a class as an spring object
-@Bean: it used to create beans or objects.
+@Bean: it used to create beans or objects.its a method level annotaion.
 @Controller: it used to declare a class as controller. Basically it used for controller layer.
 @Service: it used to declare a class as service. Basically it used for service layer. it contains business logic.
 @Repository: it used to declare a class as repository. Basically it used for repository layer. this layer directly deals with database.
@@ -1140,12 +1142,12 @@ Annotations:
 @Getter:it is used to generate getter methods.
 @Setter:it is used to generate setter methods.
 @ToString:it is used to print object.
-@RequestBody:it is used to convert Json type object into userdefined object                                                                                          
-@PathVariable:It is used to extract values from url                                                                                                                                                                                                                                                                                              
+@RequestBody:it is used to convert Json type object into userdefined object
+@PathVariable:It is used to extract values from url
 @RequestParam:it used to extract key value pairs fom url.
 @Value: it is used to take user input from application properties file dynamically.
 @Query: it is used to enable native query/sql query into our spring application.
-ResponseEntity: it used to convert the reponse object into json type object.                                                                                               
+ResponseEntity: it used to convert the reponse object into json type object.
 
 Note:
 ------
@@ -1193,9 +1195,10 @@ Task:
 Microserivce:
 =============
 -> Microservice, in other word its known as distributed application.
--> that means while a monolithic application contains all types of services in a single applcation, a microservice will create indivisual service to handle individual tasks.
+-> that means while a monolithic application contains all types of services in a single application, a microservice will create individual service to handle individual tasks.
 -> these services will be interconnected.
 for example:- Swiggy application contains different services like food ordering, tracking, payment, registration, security etc.
+
 Microservice Architecture:
 --------------------------
 -> From front-end(client) user will send a http request which will come in json form to backend. in backend, server is there to receive the request.
@@ -1479,17 +1482,18 @@ Note: Model object used to transefer the java object to view(html/jsp page).
 	to dispatcher servlet or else 404 error page will send to dispatcher servlet.
 -> futher dispatcher servlet will return the response to user.
 
-5.can we addd sql queries directly into application?how?
+5.can we add sql queries directly into application?how?
 ->Yes,we can add sql queries directly into application by using @Query annotation and give the condition as nativeQuery = true and then give SQL query as value.
 
 6.microservice application vs monolithic applicaiton?
-->
+->Microservice, in other word its known as distributed application.
+->while a monolithic application contains all types of services in a single applcation, a microservice will create indivisual service to handle individual tasks.
 
 7.what is Thread.sleep()?
 ->Thread.sleep() is used to pause the execution of the current thread for a specified time.
 
 8.why we use hbm-ddl-auto?
-->This the property we are using in application.properties file.
+->This is the property we are using in application.properties file.
 ->This property is use for create and draw table automatically.
 
 9.comparable vs comparator?
@@ -1506,7 +1510,7 @@ Comparable:
 
 10.static vs nonstatic?
 Static:
-->Defined within a class bu using static keyword.
+->Defined within a class by using static keyword.
 ->Static is also known as class variable.
 ->Memory allocated at the time of class is loaded.
 ->Can be referred using class name or object reference.(object reference is not preferred.)
@@ -1569,8 +1573,7 @@ ArrayList:
 LinkedList:
 -----------
 ->It is the List representation.
-->here, each element is stored in a node, Which contains refrences to the next and previous nodes. This makes it efficient for inserting or deleting
-  elemets at any position in the list.
+->here, each element is stored in a node, Which contains refrences to the next and previous nodes. This makes it efficient for inserting or deleting elements at any position in the list.
 ->But it's not preferred when we need fast random access to an element.
 
 Steps Of JDBC
@@ -1601,7 +1604,7 @@ Step4: Transaction[I]
 
 `
 
-@Data=> its a lombok annotation. it contains default constucor, setters and getters, tostring.
+@Data=> its a lombok annotation. it contains default constructor, setters and getters, tostring.
 @NoArgsConstructor=> signifies default constructor
 @AllArgsConstructor=> signifies parameterized constructor
 
@@ -1613,13 +1616,13 @@ Ans: ->Spring Boot is a spring module, which is part of a spring framework.
   i. We don't have to add dependencies manually from maven repository.
   ii. No version mismatching of dependencies.
   iii. It helps to develop application rapidly by using boilerplate code(boilerplate refers to coomon codes used for project building)
-  iv. It provides starter dependencies.
+  iv. It provides starter dependencies(starter dependencies are multiple dependecies in a single bundle).
 
 2.What is the purpose of Spring Boot starters?
-Ans:
+Ans:Spring boot promotes rapid application development(RAD).So, it provides starter dependencies, which helps to build application faster.Starter dependecies are nothing but a bundle of related dependencies in a single package.
 
 3.Diff. b/w @Component, @Service and @Repository.
-Ans: @Component: It is used to declare a class as an spring object. It's a class-level annotation
+Ans: @Component: It is used to declare a class as an spring object. It's a class-level  annotation
      @Service: It is used to declare a class as service. It is used in service layer. It tells spring that it contains business logic.
      @Repository: It is used to declare a class as Repository. It is basically used in repository layer.This layer directly deals with database.
 
@@ -1627,9 +1630,6 @@ Ans: @Component: It is used to declare a class as an spring object. It's a class
 Ans: -> Dependency Injection follows Has-A relationship concept. That means one class has another class onject inside it.
      ->We can inject one class object into another class by using @Autowired annotation. We can do it by using xml configuration also.
      ->We are using @Bean annotation to create bean or objects. It is a method-level annotation. It is alternative of XML<bean> tag.
-
-5.How does springboot support microservices?
-Ans: ->
 
 6.What is Spring Boot Actuator?
 Ans:->Admin server works as a actuator, which is used to check the health of our application(like: Working condition of CPU, Service is up or down etc..)
@@ -1642,15 +1642,20 @@ Ans:->Admin server works as a actuator, which is used to check the health of our
    ->For Registration service we will add admin client dependency.
 
 7.Diff. b/w CRUD Repository and JPA Repository.
-Ans: CRUD Repository:
-    ->CRUD Repository is a interface, available in spring boot applocations.
-    ->It contains methods for doing CRUD operations.
-    ->In CRUD repository we can do CREATE,READ,UPDATE,DELETE operations.
-    JPA Repository:
-    ->
+Ans: Repository[I]
+		|
+	CrudRepository[I]
+		|
+	PagingAndSortingRepository[I]
+		|
+	JpaRepository[I]
+->For our basic CRUD operations, all necessary methods available in CrudRepository.
+->Apart from this for pagination functionality we are having PagingAndSortingRepository.
+  Pagination->we can set how many data to be displayed for single page.
+->Some extra functionalities for CRUD are available in JpaRepository.Like: Batch operations.
 
 8.How does Spring Boot handle database interactions?
-Ans: ->
+Ans: -> Spring data jpa module handles all database operations in spring.
 
 9.How does Spring security work?
 Ans: -> from user, request comes to dispatcher servlet, then further it will sent to handler mapping,controller and view resolver.
@@ -1662,9 +1667,8 @@ Ans: -> from user, request comes to dispatcher servlet, then further it will sen
      -> Authorization: validating user role or permission to access any page.
 
 10.What is caching in spring boot?
-Ans:
-
-11.How does spring boot handle exception handling?
+Ans:->It helps to reduce database calls by introducing an extra layer before DB.
+->It stores the result in temporary memory and whenever we hit an endpoint we will get response from this temporary memory instead of everytime directly hitting to DB.
 
 Core Java interview Qus:
 ------------------------
@@ -1686,21 +1690,35 @@ Ans: ->When we create a java progarm, source code compiled into byte code by JVM
      ->This is why Java is known as platform independent.Java follows WORA(Write Once Read Anywhere).
 
 3.How does java handle memory management?
-Ans:
+Ans:We are having different types of memory provided by java in JVM to store it.
+(Refer JVM architecture)
 
 4.Diff. b/w == and .equals()
 Ans:-> == is a comparision operator.(= is assignment operator)
     ->It uses to compare 2 objects address. If both are equal, then it will return true, else it will return false.
     ->.equals() compares two objects with respect to their content.
 
-5.Diff b/w Synchronized and volatile?
-Ans:
+5.Diff b/w synchronized and volatile?
+Ans:synchrinized:
+->only one thread can execute a synchronized block/method at a time.changes made by one thread are visible to others after the lock is released.
+Ex:public synchronized void increment() {
+    count++;
+}
+
+Volatile:
+->Guarantees visibility only: when one thread updates a volatile variable, the new value is immediately visible to other threads.
+Ex:private volatile boolean flag;
 
 6.How does java handle thread communication?
-Ans:
+Ans:By using two methods. i.async() ii.await()
 
 JVM Architecture:
 -----------------
+->JVM is stands for Java Virtual Machine.
+->It is a run time engine which is responsible for run java based application.
+->It has 2 main tasks:
+1.Load .class file
+2.Execute .class file
 ->JVM Architecture contains 5 components.
 1.Class Loader:
 ----------------
@@ -1717,7 +1735,7 @@ JVM Architecture:
 3. Execution engine:
 ---------------------
 -> it contains 3 components.
-	a.interpreter
+	a. interpreter
 	b. JIT compiler
 	c. garbage collector/security manager
 4. java native interfaces
@@ -1740,24 +1758,27 @@ assertions:To test different conditions we require assertions.There are differen
 @RepeatedTest:used to define how many times we want to execute a method
 @AfterEach:This code block should execute after each method.
 @AfterAll:This code block should execute after all method
+
+Mockito:
+---------
 ->To make JUnit testing easier, we are having different frameworks as well.For example. Mockito, wire mock etc...
 ->Mockito framework is based upon mocking concept.Different annotations we use here, like:
 @Mock:It is used to create mock/dummy object
 @InjectMock:It helps to inject mock beans or mock objects into the provided class.
 ->To test controller layer, we have to mock service and repository whereas we have to use @InjectMock annotation for conroller.
-->To test Service layer, we have tp mock repository layer and we ahve to use @InjectMock annotation for service.
+->To test Service layer, we have to mock repository layer and we ahve to use @InjectMock annotation for service.
 
 JIRA
 ====
 -> it helps implementing agile methodology in a project.
--> generally client provides requirements. then BA[bussiness anlyst] will create features out of these requirements.
+-> generally client provides requirements. then BA[bussiness analyst] will create features out of these requirements.
 -> further the feature will be divided into tasks.
 -> TL[team lead] will further decides how many tasks can be delivered for that sprint.
 -> A sprint usually takes 15days to complete.
 -> further TL will assign tasks to developers and developers starts to work upon those userstories after understanding the requirements.
 -> all these things are getting done using this JIRA tool.
 -> it helps to manage all the development work flow and manange the team efforts.
-
+ 
 GIT
 ===
 -> it stands for version control system.
@@ -1768,4 +1789,327 @@ GIT
 	git commit -m "msg"=> commits our local changes in local repo
 	git push=> sends all the local commits to remote repo, it will not send the changes which are not commited in local.
 	git pull=> pulls all remote changes to local repo
+
+
+Q.Can we override constructor?
+Ans: In Java, constructors cannot be overridden. This is because constructors are not inherited.But we can overload the constructor.
+
+Q.What is a constructor and why we use?
+Ans:Constructor is nothing but a special type of method. We use it for object initialization.
+
+Q.While inherting a class do we inherit constructors?
+Ans:You can't override constructors in Java because they are not inherited.
+
+Q.Can we override static method?
+Ans:No,whenever we try to override a static method in java, it will lead to hide it.That is known as "method Hiding".
+
+Q.what is serialization?
+Ans:In Java, serialization is the process of converting an object into a byte stream so that it can be easily saved to a file, transmitted over a network, or stored in a database. 
+->The main purpose of serialization is to allow the object to be persisted or transferred and then later deserialized (reconstructed back into an object) at a different location or time.
+
+Q.1st level and 2nd level cache in hibernate?
+Ans:
+	1st level cache:
+	This is local to session object and can't be share with multiple sessions.
+    		  ->This is enabled by default and there is no way to disable it.
+              ->This is available only until the session is open.Once the session is closed 1st level cache will be destroyed.
+			  
+    2nd level cache:
+	This is maintained at session factroy level and shared among all the sessions.
+              ->This is disabled by default but we can enabled through configurations.
+              ->This is available throughout the application life cycle.It is only destroyed and re-created when an application is restarted.
+
+Q. what is design pattern?
+Ans:A design pattern is a reusable solution to common software design problems.It provides a structured approach to solve those problems
+Types of design pattern:
+------------------------
+1.Creational design pattern
+	->This patterns helps in creating objects in a flexible and reusable manner.
+		a.Singleton pattern
+		b.Factory pattern
+		c.Abstarct Factory Pattern
+		d.Builder Pattern
+		e.ProtoType Pattern
+2.Structural design pattern
+	->This pattern helps in organizing classes and objects.
+		a.Adapter Pattern
+		b.Bridge Pattern
+		c.Composit Pattern
+		d.Decorater Pattern
+		e.Facade Pattern
+		f.Proxy Pattern
+		g.Fly weight Pattern
+3.behavioural design pattern
+	->This pattern focus on communication between objects.
+		a.Command Pattern
+		b.Interpreter Pattern
+		C.Iterator Pattern
+		d.Mediator Pattern
+		e.Observer Pattern
+		f.chain of responisibilty Pattern
+		g.template method Pattern
+		h.stategy  Pattern
+		i.visitor Pattern
+		j.state Pattern
+		k.memento Pattern
+		
+Q. what is profiles concept in spring boot?why we use it?
+Ans:-> profiles refers to different environments like dev, test, prod etc. we can use different configurations for different environments.
+->Like, dev-application.properties file.
+		prod-application.properties file.
+		test-application.properties file.
+		
+Q. what is fail fast and fail safe collection?
+Ans:Collections are divided into 2 types.
+	i. Fail fast collection
+	->It will throw error immidiately when we modify collection object while iterating the collection.Ex: ArrayList,LinkedList,vector.. etc
 	
+	ii.Fail safe collection
+	->It will not throw any error even if we modify (add/remove) collection object data while iterating. Ex:CopyOnWriteArraayList, ConcurrentHashMap etc..
+	
+Q. what is ACID properties?
+Ans:generally ACID properties we use in database for below properties,
+	1.Atomicity: Either all the changes are performed, or
+	none of them.
+	2.Consistency: Data is in a consistent state when a
+	transaction starts and when it ends,
+	3.Isolation: Transactions that run concurrently appear to
+	be serialized.
+	4.Durability: After a transaction successfully completes,
+	changes to data persist and are not undone, even in the
+	event of a system failure.
+
+Q.What is SOLID principle or What are the SOLID principles of software design How would you apply these principles in Java development?? 
+
+1.Single Responsibility Principle (SRP):
+->The SRP states that a class should have only one reason to change.It means that a class should have a single responsibility or purpose
+
+2. Open-Closed Principle (OCP):
+->The OCP states that classes and modules should be open for extension but closed for modification. It means that you should be able to extend the behavior of a class without modifying its existing code. In Java, you can achieve this by using abstraction, interfaces, and inheritance.
+
+3. Liskov Substitution Principle (LSP):
+The LSP states that objects of a superclass should be replaceable with objects of its subclasses without affecting the correctness of the program,
+
+4. Interface Segregation Principle (ISP):
+The ISP states that clients should not be forced to depend on interfaces they don't use.
+
+5. Dependency Inversion Principle (DIP):
+The DIP states that high-level modules/classes should not depend on low-level modules/classes directly.
+
+By using these SOLID principles, you can create more maintainable,flexible,and testable code that is less prone to bug and easier to extend or modify.
+
+Q. delete vs drop vs truncate?
+ans: delete: removes rows from a table. it can be rolled back. DML
+	 drop: removes a table from database. can not be rolled back. DDL
+	 truncate: removes all rows from a table. can not be rolled back. DDL
+	 
+Q. hibernate vs spring data jpa?
+Ans: 
+-> Hibernate is a java based ORM tool that provides a framework for mapping application
+domain objects to the relational database tables and vice versa.
+
+-> Spring Data JPA is an abstraction layer on top of JPA to Reduce the amount of boilerplate code required to implement data access object (DAO) layer.
+
+-> Hibernate is a JPA provider ( JPA specification implementation). Spring Data JPA is not a JPA provider. It simply "hides" the Java Persistence API (and the JPA provider) behind its repository abstraction.
+
+Q. thread life cycle?
+Ans: create >> runnable >> running >> dead
+Note: the time period in between this runnable and running states, thread can be put in to sleep(), waiting(), suspend() by jvm. its known as non-runnable state
+
+Q. bean life cycle?
+Ans:Container Started >> Bean Instantiated >> Dependencies Injected >> Custom init() method >> Bean is Ready to be used >> Custom utility method >> Custom destroy() method
+-> @PostConstruct and @PreDestroy, these annotions used for configuring any methods or configurations before or after bean creation.
+
+Q. explain hashing technique?
+Ans:
+Q.How does HashMap handle collisions internally?
+Ans:
+Q.How would you scale ahotel booking system?
+Ans: scaling can be done in two ways.
+		1. horizental
+		2. vertical
+		
+Q.How does spring security handle authentication?
+Ans: Security contains two things;
+	 1. Authorization
+	 2. Authentication
+	 
+Q.Indexing vs.Partitioning-When should you use each?
+Ans:
+1. index is a data structure (like a B-tree or hash index) that allows the database to quickly locate rows based on the values in specific columns. It works similarly to an index in a book, allowing for faster lookups.
+
+2. Partitioning is the process of splitting a large table into smaller, more manageable pieces called partitions. Each partition holds a subset of the data, typically based on a key (e.g., range of dates, geographic region, or ID range). Partitioning helps in managing large datasets and improving performance in certain cases.
+
+Q.How to optimize API response for high traffic?
+Ans:->We can scale the applicaiton horizentally.
+->We can make use of load balancers to distribute the load among instances.
+->We can use rate limiters for which we can process limited amount of traffic at a time.
+
+Q.What is singleton class in java?
+Ans:Step-1:Declare constructor as private.
+Step-2:Create a method make it static, which retrun the same class object.
+Step-3:Declare same class variable and initialize with null value.
+
+Q.Difference b/w Array and LinkedList
+Ans:Array:
+    ------
+->It is a fixed size data structure.
+->Array uses contiguous memory allocation.
+->Insertion and deleting is not preferred in array as elemrnts needs to be shifted.
+->Accessing element in array is faster.
+->Arrays are best suited for small-sized data.
+->Array can store primitive data types as well as objects.
+LinkedList:
+-----------
+->LinkedList is dynamic in size.
+->LinkedList uses non-contiguous memory allocation.
+->Insertion and deletion operations is preferred bexacuse it uses nodes to stored the elements.
+->Accessing elements in faster is not preferred here.
+->LinkedList are best for big-size data.
+->LinkedList can only store objects.
+
+Q.Can we override start() method?
+Ans:-> yes, we can override start() method in java.
+->We can override start() method to provide our own implementation of thread execution.
+->start() method is defined in the thread class and is responsible for starting a new thread of execution.
+->However,it is recommended to avoid overriding a start() method and instead use the run() method for custom thread execution.
+->Ex: public void start(){//custom implementation}
+
+Q.Can we override main() method?
+Ans:->No.As, it is a static method.
+
+Q.Can we overload main() method?If yes, which one will be called?
+Option A.public static void main(String[] args)
+	   B.public static void main(String name)
+Ans: Option A is the one called by the JVM when we start the program.It acts as default entry point. but if we want to execute the second method then we have to call the 2nd method from inside 1st method.
+example:
+===========
+public class MainOverload {
+    public static void main(String[] args) {//default entry point for JVM
+        System.out.println("This is the default main method.");
+        main("Overloaded main method called!");
+    }
+
+    public static void main(String name) {
+        System.out.println(name);
+    }
+}
+
+Q. if we can not instantiate abstarct class then what is the role of constructor present inside it?
+Ans: constructor is used for initializing objbect.
+
+Q.Diff. b/w @Primary and @Qualifier
+Ans. 
+-> we can provide bean names by using this @Qualifier annoation.
+->  while calling overloaded beans(basically it refers to overloaded methods with @Bean annotaion), we can set which one should be Primary.
+
+Q.What is class loader
+Ans: refer JVM architecture.
+
+Q.What is Garbage collector and how it works?
+Ans: its a program present inside JVM's execution engine, which freeups the space by removing unassigned, unused objects.
+->It prevents memory leaks and optmize memory usage.
+
+Q.What is Aggregation and composition.
+
+Q.I want to add element inside a collection where duplicates won't be allowed and insertion order also be preserved.What should i use?
+Ans: we can use Set type collection. it doesnot allows duplicate elements. as we want to preserve insertion order we can use LinkedHashSet.
+
+Q.Diff b/w limit() vs skip().
+Ans: both used in stream api.
+
+Q.Spring bean scopes
+Ans: 1. singleton 2. prototype
+
+Q.Why static and default methods are added inside interfaces?
+Ans: to add a concrete method inside interface we can have these static or default method.
+
+Q.diff b/w heap and stack memory
+
+Q.Stream vs parallel stream
+Ans: Stream process a collection using single thread whereas parallel stream takes help of multiple threads to process.
+
+Q.Which should be preferred b/w String and StringBuffer when there are many updates required to the data.
+Ans: StringBuffer will be preferred as it allows string modification without creating multiple string obejcts.
+
+Q.What is @Configuration and @bean?
+Ans: 
+@Configuration: its used enable annotation based configuration, it declares that the class is containning some configurations. its a class level annotaion.
+@Bean: it used to create beans or objects.its a method level annotaion.
+
+Q.What is IOC in spring
+Ans: IOC stands for inversion of control, that means the object creation power will be given to spring container.
+
+Q.Dependecy injection and it's type
+Ans: dependency injection means we can inject a class object into another class.
+we can achieve it using @Autowired.
+it is 3 types. 1. field injection 2. setter injection 3. constructor injection
+
+Q.how database configuration in spring boot
+Ans: by using application properties file we can provide all the database related configurations like database creds(username,password, url,driver), hibernate properties(hbm-ddl=auto),jpa properties
+
+Q.What is type of joins and it's work.
+1. caretsian join or natural join
+2. left outer join
+3. right outer join
+4. inner join
+
+Q.Diff b/w Runnable inteface and callable inteface
+Ans:->Runnable is for tasks that don’t need to return a result or throw exceptions.
+Ex:void run();
+->Callable is for tasks that need to return a result and can throw exceptions. It's more flexible.
+Ex:<return type> call() throws Exception;
+
+Q.How do u enable debugging logs in a spring boot application?
+Ans:By using log4j we can enable logs.
+->@Slf4j ths can also be used to enable logs.
+
+Q.What is the default port of springboot and how to change?
+Ans:8080 is default port number and we can change it in applicaiton properties file by using server.port=<new port number>
+
+Q.Waht is System.out.println?
+Ans:System:It is a class
+->System.out: Refers to the standard output stream (the console).
+  println(): Prints the text followed by a newline.
+->So, when you write System.out.println("Hello, World!");, it sends the string "Hello, World!" to the console and then moves the cursor to the next line, so any subsequent output will appear below it.
+
+Q.Diff. b/w sleep and wait method
+-> sleep()- Pause the current executng thread, for a specific time.
+	wait()- Mix the thread wait until it's notified.Used in inter thread communication.
+	
+Q,Diff b/w List and Set. Which one to prefer in which requirements and why
+
+Q.How to create immutable classes?
+
+Q.Whta is flatMap?
+Ans:->flatMap() is used in stream.
+->flatMap is a intermediate function.
+->We use flatMap to convert 2D array into single dimensional array.
+
+Q.What annoation you use to handle the exceptions?
+Ans:@ControllerAdvice
+
+Q.Diff. b/w HashMap and ConcurrentHashMap
+
+Q.What is the use of transient keyword in java?
+Ans: While serializing a class if we make a property a transient, then that particular property will not be serialized.
+->If we don't want to inject a property inside class, in that case also we can mark that property as transient.
+->Ex:transient String name
+
+Q.List of primitive and non-primitive data types default value
+Ans: primitive:
+	 byte-0
+	 short-0
+	 long-0L
+	 int-0
+     float-0.0f
+	 double-0.0d
+	 boolean-false
+	 char-''
+	 non-primitive
+	 Arrays:null
+	 String:null
+	 Object:null 
+	 
+	 
+	 
