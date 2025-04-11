@@ -1194,10 +1194,17 @@ Task:
 =========================================================================================
 Microserivce:
 =============
+Q.Diff b/w microservice and monolithic application.
 -> Microservice, in other word its known as distributed application.
 -> that means while a monolithic application contains all types of services in a single application, a microservice will create individual service to handle individual tasks.
 -> these services will be interconnected.
-for example:- Swiggy application contains different services like food ordering, tracking, payment, registration, security etc.
+->for example:- Swiggy application contains different services like food ordering, tracking, payment, registration, security etc.
+->In monolithic application it's difficult to manage the development process.A single  code change in a particular code block can led to entire application failure.
+->Monolithic applications are tightly coupled.
+->Scaling is difficult.low flexibility.
+->In microservice application it's easy to manage compare to monolithic as different tasks are performed in different services.
+->Microservice application are loosely coupled i.e one change in a service will not effect other services.
+->It is highly flexible and scalable in nature.
 
 Microservice Architecture:
 --------------------------
@@ -2111,5 +2118,38 @@ Ans: primitive:
 	 String:null
 	 Object:null 
 	 
+How and why we are using JPA?
+Ans:JPA stands for Java Persistence API.
+->Earlier we were using JDBC for doing the connection b/w java and database but there were some problem occured, known as ORM problems.
+->To overcome those problems, JPA standards came into picture. It provided some rules and regulations. Hibernate framework followed those JPA standards and provided solutions to ORM problems.
+->Then Spring data JPA came into picture. It provided an abstraction layer to Hibernate framework implementations.
+->Spring data JPA conatins different repositories.JPARepository,PagingAndSorting Repository,CrudRepository. Different repositories contains different methods to perform database operations.
+
+Q.How we can optimize the performance of an endpoint(explain in terms of caching).
+Ans: By using caching mechanism we can improve the response time of an endpoint as well as the database hittting can be reduced.
+-> For this we can use Redish Cache.
+-> We can introduce one extra layer before database known as cache layer.
+->@Cachable, @CacheEvict, @CachePut
+
+Q.What is @Transactional
+->@Transactional is an annotation used in Spring Framework (Java) to manage transactions declaratively.
+->When you annotate a method or class with @Transactional, Spring does the following:
+	1.Starts a database transaction before the method executes.
+	2.Commits the transaction if the method completes successfully.
+	3.Rolls back the transaction if a runtime exception (unchecked exception) occurs.
+->Points to remember here-
+	i.Only public methods are transactional by default.
+	ii.You need to have Spring’s transaction management enabled (via @EnableTransactionManagement or auto-config in Spring Boot).
+
+Q.How we can configure config server.What is the benefit of using it in a microservice application
+Q. what is the use of api gateway?
+Q. what is the role of eureka server?
+Q. do you know about distributed logging mechanism in microservice application?
+Q. how to communicate in microservice environment?
+Q. explain hiibernate steps?
+Q. explain your project and day to day work.
+Q. how to handle custom exception in springboot application?
+
+
 	 
 	 
