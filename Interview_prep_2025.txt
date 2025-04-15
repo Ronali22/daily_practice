@@ -286,6 +286,57 @@ public class Polymorphism {
 
 }
 
+Interface:
+-----------
+-> in interface all the variable are by default public static final and methods are public abstract.
+-> Every interface itself an abstract.
+-> Interfaces can't be instantiated.
+-> Interface can be inherited into a class by using implements keyword.
+-> Interface can also be inherited into another inteface by using extends keyword.
+-> Whenever interface is inherited then all abstract methods of an interface must be overridden in a sub class or sub class must be declared with abstract keyword otherwise compile time error occurs.
+-> an interface can contain concrete methods known as default methods.
+-> as default methods introduced in java 1.7, to provide support to the older versions, we have to provide "default" keyword as prefix to the concrete methods,
+   this is known as "backward compatibility".
+
+example:
+================
+package com.InterviewPractice;
+
+interface Bike {
+	void speedUp();//abstract method
+
+	default void electricSupport() {//concrete method
+		System.out.println("Electric support provided");
+	}
+}
+
+interface ElectricBike {
+	void roboticBike();
+}
+
+class Remote implements Bike, ElectricBike {//multiple inheritance
+	@Override
+	public void speedUp() {
+		System.out.println("speed increased");
+	}
+
+	@Override
+	public void roboticBike() {
+		System.out.println("Robotic bike has started");
+	}
+}
+
+public class Interface {
+
+	public static void main(String[] args) {
+		Remote r = new Remote();
+		r.speedUp();
+		r.electricSupport();//calling default method
+		r.roboticBike();
+		
+	}
+
+}
 
 Exception Handling:
 -------------------
@@ -661,7 +712,7 @@ public class PriorityQueueEx {
 ------------------
 -> It is an implementation of double ended queue data structure with array representation.
 -> it allows duplicate elements.
-->it allows both insertiona and deletion at both the end, as it implemnts dequeu interface.
+->it allows both insertion and deletion at both the end, as it implemnts dequeue interface.
 
 package com.InterviewPractice.collection;
 
@@ -680,57 +731,7 @@ public class ArrayDequeEx {
 
 }
 
-Interface:
------------
--> in interface all the variable are by default public static final and methods are public abstract.
--> Every interface itself an abstract.
--> Interfaces can't be instantiated.
--> Interface can be inherited into a class by using implements keyword.
--> Interface can also be inherited into another inteface by using extends keyword.
--> Whenever interface is inherited then all abstract methods of an interface must be overridden in a sub class or sub class must be declared with abstract keyword otherwise compile time error occurs.
--> an interface can contain concrete methods known as default methods.
--> as default methods introduced in java 1.7, to provide support to the older versions, we have to provide "default" keyword as prefix to the concrete methods,
-   this is known as "backward compatibility".
 
-example:
-================
-package com.InterviewPractice;
-
-interface Bike {
-	void speedUp();//abstract method
-
-	default void electricSupport() {//concrete method
-		System.out.println("Electric support provided");
-	}
-}
-
-interface ElectricBike {
-	void roboticBike();
-}
-
-class Remote implements Bike, ElectricBike {//multiple inheritance
-	@Override
-	public void speedUp() {
-		System.out.println("speed increased");
-	}
-
-	@Override
-	public void roboticBike() {
-		System.out.println("Robotic bike has started");
-	}
-}
-
-public class Interface {
-
-	public static void main(String[] args) {
-		Remote r = new Remote();
-		r.speedUp();
-		r.electricSupport();//calling default method
-		r.roboticBike();
-		
-	}
-
-}
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Java 8 features:
@@ -1299,7 +1300,7 @@ one more controller getOrdersByAddress which will provide all the orders from sa
 
 How to create a microservice for API Gateway:
 ------------------------------------------------
-Step-1: Add dependency "Gateway and Eureka Client" in pom.xml file..
+Step-1: Add dependency "Gateway(Spring cloud Strater Gateway) and Eureka Client" in pom.xml file..
 Step-2:In application.properties file add eureka properties file and change the port number
        server.port=9595
        spring.application.name=GATEWAY-SERVICE
@@ -1308,7 +1309,7 @@ Step-2:In application.properties file add eureka properties file and change the 
        eureka.client.register-with-eureka=true
        eureka.client.fetch-registry=true
        eureka.instance.prefer-ip-address=true
-Step-3:
+Step-3:In main class create a confing class
 
 3. Internal flow of Config Server:
 --------------------------------------
@@ -1369,7 +1370,15 @@ RestTemplate:
 -> it follows producer and consumer concept, where consumer will send a request to producer and producer will send response.
 -> steps to implement rest template;
 Step:1
--> create producer applciation with all types of endpoints(POST,PUT,DELETE,PATCH,GET etc..)
+->Add dependecies- lombok,spring-boot-starter, spring-boot-starter-web in pom file
+
+Step-2:
+->Create a entity class and inside this create  a class give some properties and add @Data- It is lombk annotation.It's equivalent to @Getter,@Setter and @ToString.  @NoArgsConstructor- defaukt constructor, @AllArgsConstructor-parameterized constructor
+
+Step-3:
+-> create producer controllerclass with all types of endpoints(POST,PUT,DELETE,PATCH,GET etc..)
+
+
 Step:2
 -> create a consumer application. At controller layer we will make use of RestTemplate to send request to producer app and consume the response coming from it.
 Step:3
@@ -1428,7 +1437,7 @@ final:this keyword we can use it before a variable, method, class.
 	if it placed before a method then that method can not be overridden.
 	if it placed before a class name then it can not be extends or inherited.
 finally:it used with try catch block to perfom some end tasks.
-finalize:it uses for garbage collection.
+finalize:it is use to perfom clean-up processing before garbage collection.
 
 use of pom file?
 use of application properties file?
@@ -1928,10 +1937,14 @@ Ans:Container Started >> Bean Instantiated >> Dependencies Injected >> Custom in
 -> @PostConstruct and @PreDestroy, these annotions used for configuring any methods or configurations before or after bean creation.
 
 Q. explain hashing technique?
-Ans:
+Ans:->Hashing is a technique which is used to store the elements in hashset.
+->It commonly used in HashMap,HashTable,HashSet
+
 Q.How does HashMap handle collisions internally?
-Ans:
-Q.How would you scale ahotel booking system?
+Ans:->HashMap handles collisions using a linked list.
+->When multiple keys hash to the same index, they are stored in a LinkedList. 
+
+Q.How would you scale a hotel booking system?
 Ans: scaling can be done in two ways.
 		1. horizental
 		2. vertical
@@ -2068,8 +2081,7 @@ Ex:void run();
 Ex:<return type> call() throws Exception;
 
 Q.How do u enable debugging logs in a spring boot application?
-Ans:By using log4j we can enable logs.
-->@Slf4j ths can also be used to enable logs.
+Ans:By using log4j/@Slf4j we can enable logs.
 
 Q.What is the default port of springboot and how to change?
 Ans:8080 is default port number and we can change it in applicaiton properties file by using server.port=<new port number>
@@ -2142,14 +2154,86 @@ Q.What is @Transactional
 	ii.You need to have Spring’s transaction management enabled (via @EnableTransactionManagement or auto-config in Spring Boot).
 
 Q.How we can configure config server.What is the benefit of using it in a microservice application
+Ans:Step-1:We have to add config server dependency in pom.xml file
+Step-2: We have to add github properties in key value pair in application.properties file
+Step-3:in main class we have to add @EnableConfiServer annotation.
+Benefit:
+->Config server contatins config server dependency and another microservice contains config dependency.
+->microservice send request to config server and config server send that to github repo.
+->Github repo contains all common configuration properties in key value pair in application.properties file.
+->Then, Github repo will send those properties as response to config server and confi server will send that to microservice.
+->For example: we are having 5 microservices and for each microservice we have JPA and database connection properties. SO, instead of writing these properties in each microservice, we will write these common properties in github repo and make use of it when it required.
+
 Q. what is the use of api gateway?
+Ans:When a request coming from user to server, API gate way is the 1st microservice to validate that request.
+->It will check for header,cookies,authentication etc.. If the request is structurally corrdct, it will send that request to eureka server as microservice doesn't contain microservice details.
+->Eureka sever process that request and send microservice details for that particular request as a rsponse to API Gateway.
+->Then API Gateway will route that request to  that particular microservice.
+->Api gateway works a s a gatekeeper or entry point to our microservice.
+->Api gateway contains 3 components.i.Router-which route the request ii.SSO-It works a s a authenticator or security purpose iii.filter- it helps to check header,cookies etc..
+
 Q. what is the role of eureka server?
+Ans:->Every microservice needs to register at one place.That is known a seureka server.
+->It works as  registry or discovery purpose.
+->It contains all the details about microservice like:port number, number of instance etc..
+->It helps api gateway to locate the microservice.
+
 Q. do you know about distributed logging mechanism in microservice application?
+->For distributed logging mechanism in microservice application we are using Zipkin and sleuth.
+->When a request is going through various microservices, to known the flow, we need to  track that request and for this we have zipkin and sleuth.
+->To known the entire flow of a microservice we need one unique id and that is known as Trace id.
+->To know individual microservice log information, we need one id and that is known as Span id.
+->In each microervice we need to add two dependencies i.e sleuth and zipkin client.
+->Sleuth is a dependency which is present in each microservice and it helps to generate the log information.
+->Zipkin client will collect those log information from sleuth and send it to zipkin server.
+->Zipkin server is the central server which collects all the data coming from zipkin client and shows it in a dashboard.
+
 Q. how to communicate in microservice environment?
-Q. explain hiibernate steps?
+Ans:For communicate in microservice environment, we are having RestTemplate, activeMQ and kafka.
+->RestTemplate following syncronous way of communiction.In this communication when we send a request, we have to wait for that response from producer before initiating another request.
+->It follows producer and consumer concept, where consumer send request to producer and producer send response.
+->ActiveMQ and Kafka follows asynchronous way of communication.In this communiction when we send a request we don't have to wait for response to initiate another request.
+->For conuming diff. types of endpoints while implimenting a RestTemplate, we are having different methods which we can use in consumer application to consume the responses.
+  *POST type we can use it for PostForEntity method at consumer.
+  *GET  type endpoint we use for GetForEntity method at consumer.
+  *for PUT,PATCH and DELETE endpoints we can use exchange method at consumer.
+  
+Q. explain hibernate steps?
+Ans:There are 4 steps in hibernate.
+i.Configuration
+	->It provides mapping information.
+	->It produces connection properties.
+	->Gives reference to SessionFactoryectory
+ii.SessionFactory
+	->It configures db
+	->manages conncetion information
+	->Gives reference to Session.
+iii.Session
+	->Here we are doing CRUD operation.
+	->It is the live connection b/w applicaiton and database.
+	->Goves reference to transaction
+iv.Transaction
+	->it uses for commit/rollback
+
 Q. explain your project and day to day work.
 Q. how to handle custom exception in springboot application?
 
+Q.Can a constructor inherited from a parent class to child class.
+Ans:->In Java, constructors are not inherited from a parent class to a child class. However, a child class can call a parent class’s constructor using the super() keyword.
+->Constructors are special type of method used for object initialization.
+->constructors are not regular methods, they cannot be inherited.But when you create an object of a subclass, the constructor of the parent class is automatically called (either explicitly with super() or implicitly).
+
+Q.Create a student class and and create a list of student.Write a program in java 8 to filter all students with rollno>50, concatenate their first and last name.
+Ans:Refer Test1.java in STS.
+		
+Q.Create a CRUD Application,How would you start?What classses would you create and which annotation would be needed?
+Ans:I will start with adding dependencies in pom.xml file, there i will add lombok-for ,spring web,Spring JPA and for database connection mysql-connector dependencies.
+->we will create model class , repository interface,service interface, service implementation class,controller class.
+->in model calss we will use @Getter for get the user value, @Setter for set the user details, @ToString for print the object, @Entity for make the class as an entity, @Table for create a table name, @Id for declare a field as primary key, @GeneratedValue for generate id automatically and so onn.. 
+
+Q.How would you implement security? What is @EnableWebSecurity?
+
+Q.Are you familiar with design patern? Explain
 
 	 
 	 
