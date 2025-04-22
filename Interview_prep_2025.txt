@@ -15,6 +15,7 @@ JAVA:-
 
 JVM Architecture:
 -----------------
+->It stands for Java Virtual Machine.
 ->It's a run time engine, responsible to run java based applications.
 ->It has two main tasks.
   1.load .class file
@@ -47,11 +48,13 @@ Static:
 ->Static is also known as class variable.
 ->Memory allocated at the time of class is loaded.
 ->Can be referred using class name or object reference.(object reference is not preferred.)
+->It is stored in method area.
 Non-static:
 ->Defined within a class without using static keyword.
 ->Non-Static is also known as  instance variable.
 ->Memory allocated at the time of object is created.
 ->Can be referred using object reference only.
+->it is stored in heap area.
 
 What are JVM,JRE and JDK.
 Ans: ->JDK:Java Development Kit.
@@ -1066,6 +1069,7 @@ BeanFactory
 ->It also known as legacy container.
 -> it supports simple java applications only.
 
+
 ApplicationContext
 -------------------
 -> It supports all type of configuration.
@@ -1340,7 +1344,8 @@ step-3:In main class we have to add @EnableConfigServer annotation.
 
 4. Internal flow of Actuator and Admin Server:
 ----------------------------------------------
--> When we add actuator dependency in microservice, we get multiple endpoints which contains details about that microservice.
+-> spring boot actuator is a feature which provides monitoring and management capabilitites for the spring application.
+-> When we add actuator dependency in microservice, we get multiple endpoints which contains details about that microservice.like health status, metrices and environment variables etc.
 -> But here, the problem was we have to check manually individual microservices for their details.
 ->To overcome this issue, admin server came into picture. Admin sever provides a dashboard on which all the details of every microservice we can able to see visually.
 -> For example, we are having 2 microservices. one is admin server service and other is a registration service. here we will add two dependencies,
@@ -1368,6 +1373,7 @@ RestTemplate:
 -> for intercommunication of microservices we use rest template.
 -> by using this synchronous way of communication can be done.
 -> it follows producer and consumer concept, where consumer will send a request to producer and producer will send response.
+->RestTemplate is a class in Spring Framework used to make HTTP requests to RESTful web services.
 -> steps to implement rest template;
 Step:1
 ->Add dependecies- lombok,spring-boot-starter, spring-boot-starter-web in pom file
@@ -1403,12 +1409,14 @@ Step:3
 ->The concept of a circuit breaker is to prevent calls to microservice when its known, that the call may get fail or timeout.
 ->Spring clouds resiliance4j is an api given for circuit breaker concept.It also called as Fault Tolerance API, it reduces error rate by stopping execution of failure services.
 ->3 types of circuit concept exist. 
-1.Open circuit:In this state requests to other microservices will not be executed.Fallback method will be used to handle this type of scenarios.(Note: Fallback method: This returns a response message[error message] on behalf of failed microservice.)
+1.Open circuit:In this state requests to other microservices will not be executed.Fallback method will be used to handle this type of scenarios.(Note: Fallback method: This returns a response message[error message] on behalf of failed microservice.) 
 2.Close circuit:Initially circuit breaker is in closed state.i.e. both microservices are connected and able to exchange request/response.
 3.Half-Open circuit: initially circuits are in closed state. then when we start sending requests, if 50% of threshold limit get successfully sent to producer service then the circuit will remain in closed state else it will go to half open state.
 further if the requests still fails then the circuits will go to open state.
-
-
+How to implement:
+->We will create a fallback method to handle a scenario when the producer service is down and not able to respond.
+step-2:
+->We will add one annotation as @CircuitBreaker above the existing controller(PUT,PATCH,GET) and will provide the fallback method name as an input to it.
 
 Spring Security:
 -----------------
@@ -1436,7 +1444,7 @@ final:this keyword we can use it before a variable, method, class.
 	if it placed before a variable then that variable's value can not be changed.
 	if it placed before a method then that method can not be overridden.
 	if it placed before a class name then it can not be extends or inherited.
-finally:it used with try catch block to perfom some end tasks.
+finally:it used with try catch block to perfom some end tasks those are low priority.Ex:Garbage collection, closing of costly resources
 finalize:it is use to perfom clean-up processing before garbage collection.
 
 use of pom file?
@@ -1617,7 +1625,6 @@ Step3: Session[I]
 	-> gives reference of Transaction, Criteria, Query
 Step4: Transaction[I]
 	-> commits or roll back
-
 `
 
 @Data=> its a lombok annotation. it contains default constructor, setters and getters, tostring.
@@ -1715,7 +1722,7 @@ Ans:-> == is a comparision operator.(= is assignment operator)
     ->.equals() compares two objects with respect to their content.
 
 5.Diff b/w synchronized and volatile?
-Ans:synchrinized:
+Ans:synchronized:
 ->only one thread can execute a synchronized block/method at a time.changes made by one thread are visible to others after the lock is released.
 Ex:public synchronized void increment() {
     count++;
@@ -1888,7 +1895,7 @@ Ans:generally ACID properties we use in database for below properties,
 	1.Atomicity: Either all the changes are performed, or
 	none of them.
 	2.Consistency: Data is in a consistent state when a
-	transaction starts and when it ends,
+	transaction starts and when it ends,;/p;
 	3.Isolation: Transactions that run concurrently appear to
 	be serialized.
 	4.Durability: After a transaction successfully completes,
@@ -1966,6 +1973,7 @@ Ans:->We can scale the applicaiton horizentally.
 ->We can use rate limiters for which we can process limited amount of traffic at a time.
 
 Q.What is singleton class in java?
+->A Singleton class in Java is a design pattern that ensures a class has only one instance and provides a global point of access to it.
 Ans:Step-1:Declare constructor as private.
 Step-2:Create a method make it static, which retrun the same class object.
 Step-3:Declare same class variable and initialize with null value.
@@ -2030,8 +2038,6 @@ Q.What is Garbage collector and how it works?
 Ans: its a program present inside JVM's execution engine, which freeups the space by removing unassigned, unused objects.
 ->It prevents memory leaks and optmize memory usage.
 
-Q.What is Aggregation and composition.
-
 Q.I want to add element inside a collection where duplicates won't be allowed and insertion order also be preserved.What should i use?
 Ans: we can use Set type collection. it doesnot allows duplicate elements. as we want to preserve insertion order we can use LinkedHashSet.
 
@@ -2040,11 +2046,11 @@ Ans: both used in stream api.
 
 Q.Spring bean scopes
 Ans: 1. singleton 2. prototype
+1. singleton always returns same object everytime.
+2. prototype returns new object everytime.
 
 Q.Why static and default methods are added inside interfaces?
 Ans: to add a concrete method inside interface we can have these static or default method.
-
-Q.diff b/w heap and stack memory
 
 Q.Stream vs parallel stream
 Ans: Stream process a collection using single thread whereas parallel stream takes help of multiple threads to process.
@@ -2054,7 +2060,7 @@ Ans: StringBuffer will be preferred as it allows string modification without cre
 
 Q.What is @Configuration and @bean?
 Ans: 
-@Configuration: its used enable annotation based configuration, it declares that the class is containning some configurations. its a class level annotaion.
+@Configuration: it declares that the class is containning some configurations. its a class level annotaion. its used enable annotation based configuration.
 @Bean: it used to create beans or objects.its a method level annotaion.
 
 Q.What is IOC in spring
@@ -2095,10 +2101,6 @@ Ans:System:It is a class
 Q.Diff. b/w sleep and wait method
 -> sleep()- Pause the current executng thread, for a specific time.
 	wait()- Mix the thread wait until it's notified.Used in inter thread communication.
-	
-Q,Diff b/w List and Set. Which one to prefer in which requirements and why
-
-Q.How to create immutable classes?
 
 Q.Whta is flatMap?
 Ans:->flatMap() is used in stream.
@@ -2107,8 +2109,6 @@ Ans:->flatMap() is used in stream.
 
 Q.What annoation you use to handle the exceptions?
 Ans:@ControllerAdvice
-
-Q.Diff. b/w HashMap and ConcurrentHashMap
 
 Q.What is the use of transient keyword in java?
 Ans: While serializing a class if we make a property a transient, then that particular property will not be serialized.
@@ -2190,7 +2190,7 @@ Q. do you know about distributed logging mechanism in microservice application?
 
 Q. how to communicate in microservice environment?
 Ans:For communicate in microservice environment, we are having RestTemplate, activeMQ and kafka.
-->RestTemplate following syncronous way of communiction.In this communication when we send a request, we have to wait for that response from producer before initiating another request.
+->RestTemplate following syncronous way of communiction.In this s when we send a request, we have to wait for that response from producer before initiating another request.
 ->It follows producer and consumer concept, where consumer send request to producer and producer send response.
 ->ActiveMQ and Kafka follows asynchronous way of communication.In this communiction when we send a request we don't have to wait for response to initiate another request.
 ->For conuming diff. types of endpoints while implimenting a RestTemplate, we are having different methods which we can use in consumer application to consume the responses.
@@ -2214,9 +2214,7 @@ iii.Session
 	->Goves reference to transaction
 iv.Transaction
 	->it uses for commit/rollback
-
-Q. explain your project and day to day work.
-Q. how to handle custom exception in springboot application?
+	->The database operation in which, database gets updated structurally then that is known as Transaction.Ex:save,update,delete methods.
 
 Q.Can a constructor inherited from a parent class to child class.
 Ans:->In Java, constructors are not inherited from a parent class to a child class. However, a child class can call a parent class’s constructor using the super() keyword.
@@ -2227,13 +2225,314 @@ Q.Create a student class and and create a list of student.Write a program in jav
 Ans:Refer Test1.java in STS.
 		
 Q.Create a CRUD Application,How would you start?What classses would you create and which annotation would be needed?
-Ans:I will start with adding dependencies in pom.xml file, there i will add lombok-for ,spring web,Spring JPA and for database connection mysql-connector dependencies.
+Ans:I will start with adding dependencies in pom.xml file, there i will add lombok,spring web,Spring JPA and for database connection mysql-connector dependencies etc...
+->Then in application.properties file we ill add servert port number,for database  opearation will use database properties such url,username,password,platform name and will add JPA properties.
 ->we will create model class , repository interface,service interface, service implementation class,controller class.
 ->in model calss we will use @Getter for get the user value, @Setter for set the user details, @ToString for print the object, @Entity for make the class as an entity, @Table for create a table name, @Id for declare a field as primary key, @GeneratedValue for generate id automatically and so onn.. 
 
-Q.How would you implement security? What is @EnableWebSecurity?
-
 Q.Are you familiar with design patern? Explain
+Ans:A design pattern is a reusable solution to common software design problems.It provides a structured approach to solve those problems.
+Types of design pattern:
+------------------------
+1.Creational design pattern
+->This patterns helps in creating objects in a flexible and reusable manner.
+		a.Singleton pattern
+		b.Factory pattern
+		c.Abstarct Factory Pattern
+2.Structural design pattern
+->This pattern helps in organizing classes and objects.
+		a.Adapter Pattern
+		b.Bridge Pattern
+		c.Composit Pattern
+3.behavioural design pattern
+->This pattern focus on communication between objects.
+		a.Command Pattern
+		b.Interpreter Pattern
+		C.Iterator Pattern
+		d.Mediator Pattern
 
-	 
-	 
+Q.What are java 8 features introduced in java?Diff. b/w lambda expression and functional interfaces.
+Ans:Features introduced in java 8:
+i.Lambda expression
+ii.Functional interface
+iii.Method reference
+iv.Constructor reference
+v.New Date and Time Api
+vi.Default method in inteface
+vii.Static method in interface
+Diff b/w lambda and functional interface.
+lambda:
+->It is an annonymous function.
+->It has no name,no return type,no access modifier
+->In java upto 1.7, java supported only object oriented approach but java 1.8 towards by the help of lambda expression and functional interface java supported functional programming approach.
+->Functional programming:java 1.8 onwards, java supported functionas as an argument to another function.
+->exa of lambda: public static void m1(){System.out.println("Hello")};= ()->System.out.println("Hello");
+Functional interface:
+->Interface which have only ne abstract method is known as functional programming.
+->Functional interface is used to invoke/call lambda expression.
+->Java provided soem pre-defined functional interfaces.
+i.Predicate:test(T t)
+ii.Supplier:get(T t)
+iii.Consumer:accept(T t)
+iv.Function:apply(T t)
+
+Q.What is an optional class in java?
+Ans:->Optional class used to handling null.
+->If a method returns null value, it is possible that upcoming methods may get fail and will throw nullpointerexception.So,to prevent this we use optional class.	 
+
+Q.How do we achieve serialization and where do primitive types take up memory?
+->Serialization is a process which is use to converting object into byte Stream.So, that it can bse saved into a file, transfer over network and stored in database.
+->The main purpose of serialization is to transfer the object and later de-serialized.
+
+Q.What is multithreading?How do you create threads.
+Ans:Multithreading is a process of execution of more than one thread at a time.
+->In multithreading threads are sharing a common resource and memory.
+->We can perform many operations together.So, it saves our time.
+->Threads are independent, so if exception occurs in one thread, it will not effect other threads.
+->A thread is a piece of code which executes independently.
+->Thread class is present in java.lang package.
+->A thread can't be created more tahn once.If we try to do it will throw IllegalThreadStateException.
+->Threads are 2 types.i. Deamon thread ii.Non-deamon thread.
+->Deamn threads are kow priority threads which perform low priority tasks.
+->JVM don't give much importance to this.
+->Ex:Updating data, checking for updates etc..
+->Non-deamon threads are high priority threads which doing high priority tasks.
+->JVM gives much importanceto this.
+->This thread used to carry main tasks.
+->We can set a thread is deamon or non-deamon based of it's parent thread.if parent thread is deamon it will be deamon otherewise it will be non-deamon.
+->We can set a thread as deamon by using "set Deamon is true"
+->We should set the thread type before starting it.
+->Thread can be created in 2 ways. i.By extending thread ii.By implementing Runnable interface.
+
+Q.Diff. b/w comparator and comparable.
+Ans:Comparable:
+->Comparator contains compareTo().
+->It has only one argument.
+->It compares with the supplied or input argument.
+->It's present in java.lang package.
+->It follows natural ordering.
+->Comparable should be implemented in same class.
+Comparator:
+->Comparable contains compare().
+->It has two arguments.
+->It compares two arguments.
+->It's follows in customize ordering.
+->It present in java.lang.util package.
+->Comaparator can be implemented from any class.
+
+Q.When should we use a List and when should we use a set.
+->If we want to store duplicate elements we can go for List, if we don't want to store dulicate elements we should use set.
+->If we want to follow insertion order we should use list, else we should use set..
+
+Q.When should we use a List and when should we use a map.
+Ans:If we want store elements in key value pair.we ahve to use map otherwise we will use List.
+
+Q.How can we create a custom exceptions?
+Ans:1st we have to create custom exception class by extendng RunTimeException or exception class.
+Q.How can we handle exception globally in springboot
+Ans:1st we have to create custom exception class by extendng RunTimeException or exception class.
+->Then we have to create one class with annotation @RestControllerAdvice.
+->Then we have to create exceptionHandler methods by using annotation @ExceptionHandler.then we have to provide <customException>.class as input.
+->Ex:
+	@RestControllerAdvice//this class will be used for handle custom exceptions
+		public class HandleCustomExceptions {
+
+	@ExceptionHandler(CarDetailsNotFoundException.class)
+	public ResponseEntity<String> handleCarDetailsNotFoundException(
+			CarDetailsNotFoundException carDetailsNotFoundException) {
+		return new ResponseEntity<>(carDetailsNotFoundException.getMessage(), HttpStatus.BAD_REQUEST);
+	}
+	
+Q.What is wrapper class nd their advantgae in java?
+Ans:In Java, a wrapper class is a class that wraps (or encapsulates) a primitive data type into an object. Java provides wrapper classes for all eight primitive data types:
+
+Primitive Type	Wrapper Class
+byte			Byte
+short			Short
+int				Integer
+long			Long
+float			Float
+double			Double
+char			Character
+boolean			Boolean
+
+Advantage:
+---------
+1.Used in Collections (like ArrayList, HashMap):
+------------------------------------------------
+->Collections in Java store objects, not primitives. So if you want to store an int in an ArrayList, you need to use Integer.
+
+2.Autoboxing and Unboxing:
+--------------------------
+->Java automatically converts between primitives and their wrapper objects:
+	Autoboxing: converting primitive → object
+	Int a = 5; Integer obj = a;
+
+	Unboxing: converting object → primitive
+	Integer obj = 5; int a = obj;
+	
+3.Utility Methods:
+---------------------
+->Wrapper classes provide helpful methods, like:
+int num = Integer.parseInt("123"); // converts String to int
+
+4.Null Values Support:
+-----------------------
+->Wrapper objects can be null, whereas primitive types cannot. This is useful when you need to represent the absence of a value.
+
+5.Type Conversion:
+-------------------
+->Wrapper classes can convert between different number types or strings:
+Double d = Double.valueOf("3.14");
+int i = d.intValue(); // converts to int
+
+Q.Diffe. b/w String, StringBuffer and StringBuilder
+Ans:String:
+->It is immutable in nature.
+->We can't change the value.
+->Any operation like concat(), replace(), or substring() creates a new object.
+StringBuffer:
+->It is muttable. we can change the content without creating a new object.
+->It is thread safe as it's all methods are synchronized.
+->It is slower then StringBuilder.
+StringBuilder:
+->It is also muttable like StringBuffer.
+->it's not thread-safe bcoz all methods are not synchronized.
+->It is faster than StringBuffer.
+
+try{
+}
+catch(Exception e){
+}
+finally{
+try{
+}
+catch(Exception e){
+}
+}
+
+Questions to be anwered.
+-------------------------
+1.Diff. b/w SQL and NoSQL
+Ans: SQL->Structured Query Language.
+	->It has Fixed schema (structured).
+	->vertical scalability.
+	->It consists Tables (rows & columns)
+	->Ex:MySQL, PostgreSQL, Oracle
+	NOSQL->Not Only Structured Query Language
+	->It has Flexible or schema-less.
+	->Horizontal scalability.
+	->It consists Documents, key-value, graph, etc.
+	->Ex:MongoDB, Cassandra, Redis
+	
+2.How do you implement security?and how does OAuth work?
+
+3.How do you connect a microservices?
+Ans:Ways to connect a microservices:
+1.Rest API(Most commom)
+->In this synchronus way of connection happen.
+->Services communicate over HTTP using REST endpoints.
+->Lightweight and easy to implement.
+->Tools: RestTemplate, WebClient
+2.Asynchronous (Message queues):
+->Services send messages via brokers (non-blocking).
+->Useful for decoupling and high scalability.
+->Tools: RabbitMQ, Kafka, ActiveMQ
+3.Service Discovery
+->Automatically find services without hardcoding URLs.
+->Tools: Eureka, Consul, Zookeeper
+4.API Gateway
+->Central entry point for all clients.
+->Routes requests to appropriate microservices.
+->Also handles logging, rate-limiting, authentication.
+->Tools: Spring Cloud Gateway
+
+4.How would you implement security? What is @EnableWebSecurity?
+
+5.How to create immutable classes?
+Ans:Create muttable class in java means, creating a class whose value will not be change after creating object.
+->Steps to Create an Immutable Class:
+1.Make the class final – so it can't be subclassed.
+2.Make all fields private and final.
+3.Don’t provide setters – only getters.
+4.Initialize all fields via constructor.
+
+6.explain your project and day to day work.
+Ans:->i was in an insurance domain project. it was a microervice based project with several services. i was assigned with registration module, where we were taking user input at the frontend and processing it at backend using java, jdbc, hibernate, spring, spring boot,microservices. on day to day basis i log into jira for the assigned tasks and understand the userstory and tasks, teamlead will provide the insights of the assigned task and i ll proceed further for development work. like wise will take care of junits and stage deployment work further.
+
+7.How Hashmap works internally and Diff. b/w HashMap and ConcurrentHashMap
+Ans:->It Uses hashing (hashCode()) to locate data quickly.
+->Handles collisions using a LinkedList or TreeNode (since Java 8).
+Diff. b/w HashMap and ConcurrentHashMap:
+HashMap:
+->It's not thread-safe.
+->Allows 1 null key & many null values.
+->Peformance is Fast in single-threaded apps.
+->Used in Single-threaded environment.
+ConcurrentHashMap:
+->It's thread-safe.
+->It Does not allow null keys or values.
+->Performance is Better in multi-threaded apps.
+->Used in Multi-threaded environment.
+
+8.How do you handle stress situation in your project?
+-> generally 
+9.Where do you see yourself after 5 years.
+
+10.What value you will add if we hire you.
+
+11.Diff b/w .ear, .jar and .war files.
+Ans:.ear stands for enterprise ARchive
+   ->It contains .jar + .war files.
+   ->used in Java EE servers (JBoss, GlassFish)
+   .jar stands for Java ARchive.
+   ->It contains .class files, resources.
+   ->Used in Java SE / any app.
+   .war stands for Web application ARchive.
+   ->It contains JSP, Servlets, HTML, .class, .jar.
+   ->It used in Web servers (Tomcat)
+   
+12.Diff b/w save and saveorupdate.
+Ans: save():
+->Purpose of save() is it Inserts a new record only.
+->It Returns generated ID.
+->used in When inserting new data.
+saveOrUpdate():
+->Pupose of saveOrUpdate() is it Inserts or updates based on object state.
+->It Returns void.
+->used When you’re not sure if it’s insert or update
+
+13.What is @Controller annotation.How can you create a controller without an annotation?
+Ans:->@Controller annoation is used in controller layer.
+->It is used to declare a class as a controller.
+You can create a controller without annotations by:
+->Implementing Controller interface
+->Registering it via XML or Java config
+
+14.Diff. b/w view and partial view.
+15.How does an exception propagate in a code?
+16.what is merge() of the hibernate session?
+17.How can we inject a regular POJO into ISC containers.
+18.What is Aggregation and composition.
+19.diff b/w heap and stack memory.
+20.How can we find the frequency of each character using java 8?
+21.Reverse vowels of a string.
+22.	find employees grouped by department.
+23.In java how many ways we can create a object?
+Ans: 2 ways. 1. By using new keyword, by using class.forname()
+
+Notes:
+-> a basic project is having different environments like dev/stage, QA/test, -> prod/Production etc.
+
+Q. how to provide different properties to applcation in different environments[dev,qa,prod]?
+Ans: by using profiles concept we can use different properties in different environment.
+example: application.properties => default
+		 dev-applcation.properties => dev
+		 qa-applcation.properties => qa
+		 prod-applcation.properties => prod
+to enble these application properties files wrt evns we have to add 
+spring.profiles.active=dev or qa or prod
+into default applciation properties file.
+
+Q. spring aop define?
+A. spring aop is a module in spring framework, by using which we can segregate cross cutting functionalities like logging, from business logic.
