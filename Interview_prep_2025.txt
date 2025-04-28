@@ -1137,7 +1137,7 @@ Annotations:
 @Column: it written above fields to provide the column name or modified column name. 
 @RestController: ReST + Controller => ReST(Representational state transfer) its an architecture. it deals with json objects(json=> javascript object notation). 
 		it is used to transfer data via network. previously we were using XML to transfer data.(XML=> extensibile markup language)
-		in web applications we use it to declare that the class is a controller which handles all type of web requests POST, GET, PATCH, DELETE etc..
+		In RestFul web services to handles all type of web requests POST, GET, PATCH, DELETE etc..
 @RequestMapping:it used to map a url to controller.We can povide the base url using it.
 @PostMapping: it used for POST type url/endpoint. Generally we use it for insert operation.
 @GetMapping: it used for GET type url/endpoint.Generally we use it for read operation.
@@ -2457,9 +2457,6 @@ Ans:Create muttable class in java means, creating a class whose value will not b
 3.Don’t provide setters – only getters.
 4.Initialize all fields via constructor.
 
-6.explain your project and day to day work.
-Ans:->i was in an insurance domain project. it was a microervice based project with several services. i was assigned with registration module, where we were taking user input at the frontend and processing it at backend using java, jdbc, hibernate, spring, spring boot,microservices. on day to day basis i log into jira for the assigned tasks and understand the userstory and tasks, teamlead will provide the insights of the assigned task and i ll proceed further for development work. like wise will take care of junits and stage deployment work further.
-
 7.How Hashmap works internally and Diff. b/w HashMap and ConcurrentHashMap
 Ans:->It Uses hashing (hashCode()) to locate data quickly.
 ->Handles collisions using a LinkedList or TreeNode (since Java 8).
@@ -2474,12 +2471,6 @@ ConcurrentHashMap:
 ->It Does not allow null keys or values.
 ->Performance is Better in multi-threaded apps.
 ->Used in Multi-threaded environment.
-
-8.How do you handle stress situation in your project?
--> generally 
-9.Where do you see yourself after 5 years.
-
-10.What value you will add if we hire you.
 
 11.Diff b/w .ear, .jar and .war files.
 Ans:.ear stands for enterprise ARchive
@@ -2536,3 +2527,31 @@ into default applciation properties file.
 
 Q. spring aop define?
 A. spring aop is a module in spring framework, by using which we can segregate cross cutting functionalities like logging, from business logic.
+
+scenario based questions:
+===============================
+Q.explain your project and day to day work / can you please explain your roles and responisibilty in current project.
+Ans:-> Currently i am in an insurance domain project. it is a microservice based application with several services. i am assigned with registration module, where we are taking user input at the frontend and processing it at backend using java,,spring boot,Spring Data JPA,Microservices. on day to day basis i log into jira for the assigned tasks and understand the userstory and tasks, teamlead will provide the insights of the assigned task and i ll proceed further for development work. like wise will take care of junits and stage deployment work further.
+
+Q.How do you handle stress situation in your project?
+-> generally 
+Q.Where do you see yourself after 5 years.
+
+Q.What value you will add if we hire you.
+
+Q.what is your expectation from company[the company whose interview you are giving].
+Ans:
+
+Q.Why you want to looking for a switch?
+Ans:The project which i am currently working in is going to end in May. After that our team will be dissolved. Ultimately i have to appear for interview to get a new project so, I’m looking for a new opportunity where I can continue growing professionally and contribute more meaningfully.
+
+Q.Did you receive any appreciation or any any award from your client?
+Ans:Yes, I’ve received appreciation from clients on multiple occasions for my commitment to quality and timely delivery.
+
+Q.Your project following which methodology? Agile,waterfall or which?
+Ans:Agile methodology
+
+Q.Explain Agile Methodology.
+Ans:Agile methodology is an approach to project management and software development that focuses on flexibility, collaboration, and customer feedback. Work is done in small, iterative cycles (sprints), with frequent releases and continuous improvement. It helps teams quickly adapt to change and deliver value faster.
+
+
