@@ -21,10 +21,12 @@ JVM Architecture:
   1.load .class file
   2.execute .class file
 ->JVM Architecture contains 5 components.
+
 1.Class Loader:
 ----------------
 -> it used to load class files.
 -> it is responsible for 3 tasks. a. loading, b. linking, c. initialization
+
 2. Memory Areas:
 -----------------
 -> it has 5 types of memory areas.
@@ -33,12 +35,14 @@ JVM Architecture:
 	c. stack area
 	d. pc register
 	e. native method area
+	
 3. Execution engine:
 ---------------------
 -> it contains 3 components.
 	a.interpreter
 	b. JIT compiler
 	c. garbage collector/security manager
+	
 4. java native interfaces
 5. native method libraries
 
@@ -292,8 +296,7 @@ public class Polymorphism {
 Interface:
 -----------
 -> in interface all the variable are by default public static final and methods are public abstract.
--> Every interface itself an abstract.
--> Interfaces can't be instantiated.
+-> Every interface itself an abstract, Interfaces can't be instantiated.
 -> Interface can be inherited into a class by using implements keyword.
 -> Interface can also be inherited into another inteface by using extends keyword.
 -> Whenever interface is inherited then all abstract methods of an interface must be overridden in a sub class or sub class must be declared with abstract keyword otherwise compile time error occurs.
@@ -1895,7 +1898,7 @@ Ans:generally ACID properties we use in database for below properties,
 	1.Atomicity: Either all the changes are performed, or
 	none of them.
 	2.Consistency: Data is in a consistent state when a
-	transaction starts and when it ends,;/p;
+	transaction starts and when it ends.
 	3.Isolation: Transactions that run concurrently appear to
 	be serialized.
 	4.Durability: After a transaction successfully completes,
@@ -2165,8 +2168,8 @@ Benefit:
 ->For example: we are having 5 microservices and for each microservice we have JPA and database connection properties. SO, instead of writing these properties in each microservice, we will write these common properties in github repo and make use of it when it required.
 
 Q. what is the use of api gateway?
-Ans:When a request coming from user to server, API gate way is the 1st microservice to validate that request.
-->It will check for header,cookies,authentication etc.. If the request is structurally corrdct, it will send that request to eureka server as microservice doesn't contain microservice details.
+Ans:When a request coming from user to server, API gateway is the 1st microservice to validate that request.
+->It will check for header,cookies,authentication etc.. If the request is structurally corrdct, it will send that request to eureka server as api gateway doesn't contain microservice details.
 ->Eureka sever process that request and send microservice details for that particular request as a rsponse to API Gateway.
 ->Then API Gateway will route that request to  that particular microservice.
 ->Api gateway works a s a gatekeeper or entry point to our microservice.
@@ -2190,7 +2193,7 @@ Q. do you know about distributed logging mechanism in microservice application?
 
 Q. how to communicate in microservice environment?
 Ans:For communicate in microservice environment, we are having RestTemplate, activeMQ and kafka.
-->RestTemplate following syncronous way of communiction.In this s when we send a request, we have to wait for that response from producer before initiating another request.
+->RestTemplate following syncronous way of communication.In this when we send a request, we have to wait for that response from producer before initiating another request.
 ->It follows producer and consumer concept, where consumer send request to producer and producer send response.
 ->ActiveMQ and Kafka follows asynchronous way of communication.In this communiction when we send a request we don't have to wait for response to initiate another request.
 ->For conuming diff. types of endpoints while implimenting a RestTemplate, we are having different methods which we can use in consumer application to consume the responses.
@@ -2211,7 +2214,7 @@ ii.SessionFactory
 iii.Session
 	->Here we are doing CRUD operation.
 	->It is the live connection b/w applicaiton and database.
-	->Goves reference to transaction
+	->Gives reference to transaction
 iv.Transaction
 	->it uses for commit/rollback
 	->The database operation in which, database gets updated structurally then that is known as Transaction.Ex:save,update,delete methods.
@@ -2232,6 +2235,7 @@ Ans:I will start with adding dependencies in pom.xml file, there i will add lomb
 
 Q.Are you familiar with design patern? Explain
 Ans:A design pattern is a reusable solution to common software design problems.It provides a structured approach to solve those problems.
+
 Types of design pattern:
 ------------------------
 1.Creational design pattern
@@ -2265,13 +2269,14 @@ lambda:
 ->It is an annonymous function.
 ->It has no name,no return type,no access modifier
 ->In java upto 1.7, java supported only object oriented approach but java 1.8 towards by the help of lambda expression and functional interface java supported functional programming approach.
-->Functional programming:java 1.8 onwards, java supported functionas as an argument to another function.
-->exa of lambda: public static void m1(){System.out.println("Hello")};= ()->System.out.println("Hello");
+->Functional programming:java 1.8 onwards, java supported function as an argument to another function.
+->exa of lambda: public static void m1(){System.out.println("Hello")};
+				= ()->System.out.println("Hello");
 Functional interface:
-->Interface which have only ne abstract method is known as functional programming.
+->Interface which have only one abstract method is known as functional interface.
 ->Functional interface is used to invoke/call lambda expression.
 ->Java provided soem pre-defined functional interfaces.
-i.Predicate:test(T t)
+i.Predicate:test(T t)   
 ii.Supplier:get(T t)
 iii.Consumer:accept(T t)
 iv.Function:apply(T t)
@@ -2281,7 +2286,7 @@ Ans:->Optional class used to handling null.
 ->If a method returns null value, it is possible that upcoming methods may get fail and will throw nullpointerexception.So,to prevent this we use optional class.	 
 
 Q.How do we achieve serialization and where do primitive types take up memory?
-->Serialization is a process which is use to converting object into byte Stream.So, that it can bse saved into a file, transfer over network and stored in database.
+->Serialization is a process which is use to converting object into byte Stream.So, that it can be saved into a file, transfer over network and stored in database.
 ->The main purpose of serialization is to transfer the object and later de-serialized.
 
 Q.What is multithreading?How do you create threads.
@@ -2306,14 +2311,14 @@ Ans:Multithreading is a process of execution of more than one thread at a time.
 
 Q.Diff. b/w comparator and comparable.
 Ans:Comparable:
-->Comparator contains compareTo().
+->Comparable contains compareTo().
 ->It has only one argument.
 ->It compares with the supplied or input argument.
 ->It's present in java.lang package.
 ->It follows natural ordering.
 ->Comparable should be implemented in same class.
 Comparator:
-->Comparable contains compare().
+->Comparator contains compare().
 ->It has two arguments.
 ->It compares two arguments.
 ->It's follows in customize ordering.
@@ -2450,7 +2455,7 @@ Ans:Ways to connect a microservices:
 4.How would you implement security? What is @EnableWebSecurity?
 
 5.How to create immutable classes?
-Ans:Create muttable class in java means, creating a class whose value will not be change after creating object.
+Ans:Create immuttable class in java means, creating a class whose value will not be change after creating object.
 ->Steps to Create an Immutable Class:
 1.Make the class final – so it can't be subclassed.
 2.Make all fields private and final.
@@ -2476,9 +2481,11 @@ ConcurrentHashMap:
 Ans:.ear stands for enterprise ARchive
    ->It contains .jar + .war files.
    ->used in Java EE servers (JBoss, GlassFish)
+   
    .jar stands for Java ARchive.
    ->It contains .class files, resources.
    ->Used in Java SE / any app.
+   
    .war stands for Web application ARchive.
    ->It contains JSP, Servlets, HTML, .class, .jar.
    ->It used in Web servers (Tomcat)
@@ -2497,18 +2504,23 @@ saveOrUpdate():
 Ans:->@Controller annoation is used in controller layer.
 ->It is used to declare a class as a controller.
 You can create a controller without annotations by:
-->Implementing Controller interface
-->Registering it via XML or Java config
+->manually registering the controller as a Spring bean.
+->mapping requests using XML configuration or Java-based configuration.
 
 14.Diff. b/w view and partial view.
 15.How does an exception propagate in a code?
+
 16.what is merge() of the hibernate session?
+Ans: merge() in Hibernate is used to updates the DB with our changes and it returns a new object that is managed by Hibernate.
+
 17.How can we inject a regular POJO into ISC containers.
+Ans: In 3 ways we can inject a regular POJO into ISC containers.
+i.By using @Component annotation.
+ii.Using @Bean in a @Configuration Class
+iii.XML Configuration (Old Way)
+
 18.What is Aggregation and composition.
 19.diff b/w heap and stack memory.
-20.How can we find the frequency of each character using java 8?
-21.Reverse vowels of a string.
-22.	find employees grouped by department.
 23.In java how many ways we can create a object?
 Ans: 2 ways. 1. By using new keyword, by using class.forname()
 
@@ -2521,12 +2533,12 @@ example: application.properties => default
 		 dev-applcation.properties => dev
 		 qa-applcation.properties => qa
 		 prod-applcation.properties => prod
-to enble these application properties files wrt evns we have to add 
+to enable these application properties files wrt evns we have to add 
 spring.profiles.active=dev or qa or prod
-into default applciation properties file.
+into default application properties file.
 
 Q. spring aop define?
-A. spring aop is a module in spring framework, by using which we can segregate cross cutting functionalities like logging, from business logic.
+A. spring aop is a module in spring framework, by using which we can segregate cross cutting functionalities (like logging,transactions) from business logic.
 
 scenario based questions:
 ===============================
@@ -2534,13 +2546,16 @@ Q.explain your project and day to day work / can you please explain your roles a
 Ans:-> Currently i am in an insurance domain project. it is a microservice based application with several services. i am assigned with registration module, where we are taking user input at the frontend and processing it at backend using java,,spring boot,Spring Data JPA,Microservices. on day to day basis i log into jira for the assigned tasks and understand the userstory and tasks, teamlead will provide the insights of the assigned task and i ll proceed further for development work. like wise will take care of junits and stage deployment work further.
 
 Q.How do you handle stress situation in your project?
--> generally 
+Ans:I ll stay calm, and focus on solving one issue at a time. I also communicate with team to prioritize the tasks and manage expectations and collaborate on solutions.
+
 Q.Where do you see yourself after 5 years.
+Ans: I see myself in a senior role in TCS with taking more responsibilities. and contributing to projects and mentoring team members while continuously learning and upskilling myself.
 
 Q.What value you will add if we hire you.
+Ans:I am having the required skill set aligning with the role.. as well as i am having a proactive mindset, and a teamplayer approach towards deliver quality work efficiently within deadline.
 
 Q.what is your expectation from company[the company whose interview you are giving].
-Ans:
+Ans:I expect a long-term commitment with TCS and collaborative work environment, opportunities to grow professionally as well as overall and individually, support for continuous learning and upskilling which will contribute to my team and companys growth.
 
 Q.Why you want to looking for a switch?
 Ans:The project which i am currently working in is going to end in May. After that our team will be dissolved. Ultimately i have to appear for interview to get a new project so, I’m looking for a new opportunity where I can continue growing professionally and contribute more meaningfully.
@@ -2552,6 +2567,60 @@ Q.Your project following which methodology? Agile,waterfall or which?
 Ans:Agile methodology
 
 Q.Explain Agile Methodology.
-Ans:Agile methodology is an approach to project management and software development that focuses on flexibility, collaboration, and customer feedback. Work is done in small, iterative cycles (sprints), with frequent releases and continuous improvement. It helps teams quickly adapt to change and deliver value faster.
+Ans:Agile methodology is an approach to project management and software development that focuses on flexibility, collaboration, and customer feedback. It helps to Break the work into small pieces called iterations or sprints.One sprint is for 2 weeks. It Make changes quickly based on feedback and deliver value faster.
+
+TCS prv interview questions:
+----------------------------------
+
+Q.Using Stream API, find the frequency of characters in a string.
+Q.Using Stream API, find employess grouped by department.
+Q.Waht is wrapper class?
+Q.What is volatile keyword.
+Q.How does a hashmap works internally and diff. b/w HashMap and ConcurrentHshMap.
+Q.ArrayList vs LinkedList
+Q.Immutable class and how we can create one.
+
+Q.///Using Stream API, find Longest substring without repeating characters.
+
+Q.Second highest num using stream.
+
+Q.///Reverse a linked list
+
+Q.Memory allocation in java.Heap and stack memory.
+->Memory allocation to heap memory when object is created.
+->Instance variable stored in heap area.
+->It is managed by garbage collector.
+->It is used for dynamic memory location.
+Stack:
+->Memory allocation to local variable when method is called.
+->Local variable stored in stack area.
+->It stores primitive data types and reference to objects.
+
+Q.Expain how Garbage Collectors works in java
+Q. hOw java achieve polymorphism. Real life example, where polymorphism is beneficial
+Q. How can we implement singleton pattern in java
+Q.Springboot starters and give some example of springboot starters.
+Q.hOW ro design a simple restful service for managing user profiles.
+Ans:To design a simple RESTful service for managing user profiles, you follow the CRUD (Create, Read, Update, Delete) pattern and expose HTTP endpoints to interact with User resources.
+Q.How spring security handles authentication and authorization.
+Q.Explain the concept of Spring data JPA and it's advantages.
+Q.explain role of actuators.
+Q.Aspect oriented programming in spring(Spring AOP)
+
+Extra coding qus
+:----------------
+Q.Merge two sorted arrays.
+Q.Using Stream API,Count free days(No Meetings)
+Q.Using Stream Anagram Check
+Q.How can we find the frequency of each character using java 8?
+Q.Reverse vowels of a string.
+Q.find employees grouped by department.
+
+Multithreading Qus:
+--------------------
+Q.Odd/even number printing using threads
+Q.Callable vs Runnable
+
+
 
 
