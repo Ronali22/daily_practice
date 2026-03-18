@@ -2621,6 +2621,24 @@ Multithreading Qus:
 Q.Odd/even number printing using threads
 Q.Callable vs Runnable
 
+SPRING BATCH:-
+===============
+->It is a part of spring framework used for processing bulk amount of data. For example: Bank account statement generation, Payroll processing etc.. 
+->It contains components like: 
+1.Job->It is a entire batch process. It consist of steps.
+2.Step->It is a single phase of job known as task.
+3.Task->It can be 2 types. 
+	a. Chunk oriented processing(commonly used) 
+	b. Tasklet based processing
 
+Chunk oriented processing [flow: read -> process -> write]:
+------------------------------------------------------------
+1.Item Reader: Reads data from different resources like: database, files(csv,xlm,json)
+2.Item Processor: Process or transforms data. This phase handles all the business logic(1.data validation, 2.transformation, 3.filtering[skipp or retry])
+3.Item Writer: Writes into database, files, message queues.
 
+*Chunk size:Number of items process for transaction
 
+Tasklet based processing
+--------------------------
+-> used for simple tasks, one time actions. Ex: Delete files, call REST Api, archive data
