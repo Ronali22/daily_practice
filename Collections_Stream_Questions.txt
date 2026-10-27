@@ -1,0 +1,35 @@
+Most asked Coding questions from stream API
+-----------------------------------------------
+1. Find the second-highest number in a list.
+3. Find duplicate elements in a list.
+4. Remove duplicate elements from a list.
+5. Count the frequency of each element in a list.
+6. Find the first non-repeated character in a String.
+7. Find the first repeated character in a String.
+8. Count the occurrences of each character in a String.
+9. Find the maximum and minimum numbers in a list.
+10. Sort a list in ascending and descending order using Stream API.
+11. Find the top 3 highest numbers in a list.
+12. Find the sum and average of numbers in a list.
+13. Separate even and odd numbers from a list.
+14. Find common elements between two lists.
+15. Find elements that start with a particular letter.
+16. Convert a list of Strings to uppercase.
+17. Find the longest String in a list.
+18. Join a list of Strings into a single String.
+30. Find the most frequently occurring element in a list.
+23. Find duplicate words in a sentence.
+24. Find the second-longest String in a list.
+26. Count the number of Strings starting with each letter.
+29. Flatten a list of lists using flatMap().
+
+Employee Questions:
+--------------------
+18.Find the second-highest salary of employees.
+19. Group employees by department using Collectors.groupingBy().
+20. Find the highest-paid employee in each department.
+21. Partition numbers into even and odd groups using partitioningBy().
+22. Convert a list of employees into a Map using Collectors.toMap().
+25. Find the top 3 highest-paid employees.
+27. Sort employees by salary and then by name.
+28. Find the employees whose salary is greater than ₹50,000.
